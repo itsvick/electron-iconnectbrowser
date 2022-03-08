@@ -4,6 +4,12 @@ export interface ChangePassword {
     resetPasswordKey: string;
 }
 
+export interface LoginResponse {
+    code: string;
+    data: string;
+    message: string;
+}
+
 export interface RegisterResponse {
     id: number;
     rememberToken: string;

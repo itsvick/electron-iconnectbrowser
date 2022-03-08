@@ -62,7 +62,7 @@ export class AppComponent extends AbstractBaseComponent implements OnInit {
           disableClose: true,
           width: '450px'
         });
-      }
+      } 
     })
   }
 

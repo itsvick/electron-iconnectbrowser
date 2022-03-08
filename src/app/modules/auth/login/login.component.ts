@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { IpcService } from '@app/services/ipc.service';
 import { View } from '@models/entities/view';
 import { QuestionService } from '@api/services/question.service';
+import { Subject } from 'rxjs';
 
 // import { shell } from 'electron';
 
@@ -22,6 +23,8 @@ export class LoginComponent extends AbstractBaseComponent implements OnInit {
   existingUser = 'Name';
   authenticating: boolean;
   customError: string;
+
+  $loading: Subject<boolean> = new Subject<boolean>();
 
 
   constructor(
@@ -55,22 +58,36 @@ export class LoginComponent extends AbstractBaseComponent implements OnInit {
   }
 
   authenticate() {
-    this.trimEmail();
-    this.authenticating = true;
-    if (!this.form.valid) {
-      this.authenticating = false;
+    if(this.authenticating) {
       return;
     }
 
-    this.authService.authenticate(this.form.getRawValue()).subscribe({
+    this.trimEmail();
+    this.authenticating = true;
+    this.$loading.next(this.authenticating);
+    if (!this.form.valid) {
+      this.authenticating = false;
+      this.$loading.next(this.authenticating);
+      return;
+    }
+    this.authService.authenticate({email_phone: this.form.getRawValue().loginCred, password: this.form.getRawValue().password}).subscribe({
       next: (response) => {
         sessionStorage.setItem('isOfflineMode', 'false');
         this.authenticating = false;
+        this.$loading.next(this.authenticating);
 
-        this.uploadCachedViews();
+        // this.uploadCachedViews();
+        console.log('Response :', response);
+        
+        if(response.code !== '0000') {
+          this.customError = response.message;
+        }
       },
       error: (error) => {
+        console.log('Error :', error);
+        
         this.authenticating = false;
+        this.$loading.next(this.authenticating);
         if (error && error.status && error.status === 401) {
           this.customError = `Please check these credentials are incorrect.`;
         }

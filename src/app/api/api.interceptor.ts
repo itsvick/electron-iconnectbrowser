@@ -11,7 +11,14 @@ export class ApiInterceptor implements HttpInterceptor {
 
   // tslint:disable-next-line:max-func-body-length
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('req:', req);
+
     if ((req.url.startsWith('assets/') && req.url.endsWith('.svg')) || req.url.startsWith('http')) {
+      req = req.clone({
+        setHeaders: {
+          'Client-key': 'Ph!no!icApp',
+        }
+      });
       return next.handle(req);
     }
 
@@ -51,19 +58,23 @@ export class ApiInterceptor implements HttpInterceptor {
     if (token) {
       req = req.clone({
         setHeaders: {
-          Authorization: 'Bearer ' + token
+          Authorization: 'Bearer ' + token,
+          "Content-Type": 'application/json',
+          "Client-key": 'Ph!no!icApp',
         }
       });
     }
 
+
     // this has to done to change the correct routes so that the call goes to our api as the theme has its own calls to a fake db.
-    if (realRoute) {
+    if (realRoute) {  
       req = req.clone({ url: environment.apiUrl + req.url });
     }
 
     if (cachedRoute && environment.production) {
       // for future useAnimation, get the cached data and return it to the user
     }
+
     return next.handle(req).pipe(catchError(this.handleError.bind(this)));
   }
 

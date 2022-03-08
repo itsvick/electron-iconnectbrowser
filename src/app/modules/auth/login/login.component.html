@@ -2,7 +2,7 @@
     <mat-card fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="24px"
     style="width: 380px; padding: 30px;">
     <a style="cursor: pointer;" [routerLink]="['']">
-        <img class="small-brand brand-header" src="assets/images/Vector Smart Object.png"/>
+        <img class="small-brand brand-header" src="assets/images/tp-iconnect-log.png"/>
     </a>
 
         <app-input-styled class="full-width" [title]="'Email or Phone Number'" [formControl]="form.get('loginCred')" 
@@ -13,10 +13,11 @@
             [title]="'Password'" [placeholder]="'Password'">
         </app-input-styled>
 
-        <app-loader-button class="full-width" [label]="'Login'" [defaultSize]="false" (clicked)="authenticate()">
+        <app-loader-button class="full-width" [label]="'Login'" [$loading]="$loading" [defaultSize]="false" (clicked)="authenticate()">
         </app-loader-button>
-
+<!-- 
         <div class="register-hint">Don't have an account? <a class="primary-link link"
-            (click)="openWebRegister()"> Sign Up</a></div>
+            (click)="openWebRegister()"> Sign Up</a></div> -->
+         <p style="color: #e31565;" *ngIf="customError"> {{ customError }}</p>   
     </mat-card>
 </div>

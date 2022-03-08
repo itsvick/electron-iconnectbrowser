@@ -1,0 +1,21 @@
+.about {
+    &_header {
+        width: 100%;
+      h2 {
+        font-size: 28px;
+        color: #404041;
+      }
+    }
+  
+    &_content {
+        // background-color: red !important;
+        height: 100%;
+        // padding: 0px !important;
+        // margin: 0px !important;
+      p {
+        color: #404041;
+        font-size: 15px;       
+      }
+    }
+  }
+

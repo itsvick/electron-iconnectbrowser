@@ -5,6 +5,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { WelcomeComponent } from './modules/auth/welcome/welcome.component';
 import { LayoutFullComponent } from './layouts/layout-full/layout-full.component';
+import { LoginComponent } from './modules/auth/login/login.component';
 
 export const routes = [
   // {
@@ -28,9 +29,10 @@ export const routes = [
     path: '',
     component: AuthLayoutComponent,
     children: [
-      { path: '', component: WelcomeComponent },
+      { path: '', component: LoginComponent },
     ]
   },
+  // WelcomeComponent
   {
     path: 'experimental',
     component: StaticLayoutComponent,
@@ -71,9 +73,14 @@ export const routes = [
         path: 'lessons',
         loadChildren: () => import('./modules/lessons/lessons.module').then((m) => m.LessonsModule),
       },
+      {
+        path: 'browser',
+        loadChildren: () => import('./modules/browser/browser.module').then((m) => m.BrowserModule),
+      },
     ],
   },
 ];
+
 
 @NgModule({
   imports: [

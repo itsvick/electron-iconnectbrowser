@@ -57,14 +57,15 @@ function createWindow() {
         minWidth: 1180,
         minHeight: 780,
         webPreferences: {
-            nodeIntegration: false,
+            nodeIntegration: true,
+            webviewTag: true,
             contextIsolation: true,
             enableRemoteModule: false,
             preload: path.join(electron_1.app.getAppPath(), 'dist/extraResources/preload', 'preload.js'),
         },
         icon: path.join(electron_1.app.getAppPath(), 'dist/assets', 'favicon.ico'),
     });
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools()
     // https://stackoverflow.com/a/58548866/600559
     electron_1.Menu.setApplicationMenu(null);
     win.loadFile(path.join(electron_1.app.getAppPath(), 'dist', 'index.html'));
@@ -72,11 +73,11 @@ function createWindow() {
         win = null;
     });
 }
-electron_1.ipcMain.on('dev-tools', function () {
-    if (win) {
-        win.webContents.toggleDevTools();
-    }
-});
+// ipcMain.on('dev-tools', () => {
+//   if (win) {
+//     win.webContents.toggleDevTools();
+//   }
+// });
 electron_1.ipcMain.on('open-link', function (event, args) {
     electron_2.shell.openExternal(args[0]);
 });
@@ -104,7 +105,6 @@ electron_1.ipcMain.on('all-video-paths', function (event, args) {
 electron_1.ipcMain.on('video-path', function (event, args) {
     var sdCardPath = args[0];
     var encryptedCode = args[1];
-    console.log('hits');
     fs.readdir(sdCardPath, function (err, items) {
         if (err) {
             console.log(err);
@@ -112,13 +112,11 @@ electron_1.ipcMain.on('video-path', function (event, args) {
         else {
             var video = items.find(function (i) { return i.substr(i.length - 4) == encryptedCode; });
             if (video) {
-                console.log('found', video);
                 if (win) {
                     event.sender.send('video-path-complete', { hasPath: true, path: sdCardPath + video });
                 }
             }
             else {
-                console.log('not found', encryptedCode);
                 if (win) {
                     event.sender.send('video-path-complete', { hasPath: false, path: Math.random().toString(36).substring(7) });
                 }
@@ -162,20 +160,15 @@ electron_1.ipcMain.on('detect-sd-card', function (event) { return __awaiter(void
     var drives, sdCardPath, drivesLength, _loop_1, _i, _a, _b, index, drive;
     return __generator(this, function (_c) {
         switch (_c.label) {
-            case 0:
-                console.log('event--test', event);
-                return [4 /*yield*/, driveList.list()];
+            case 0: return [4 /*yield*/, driveList.list()];
             case 1: return [4 /*yield*/, (_c.sent()).filter(function (d) { return (d.isUSB || d.isCard); })];
             case 2:
                 drives = _c.sent();
-                console.log('drives', drives);
                 sdCardPath = '';
                 drivesLength = (drives.length - 1);
                 // internal hard drives filtered out by this point.
                 if (drives.length <= 0) {
-                    console.log('zero drives');
                     if (win) {
-                        console.log('sends false');
                         if (event) {
                             event.sender.send('detect-sd-card-complete', { hasPath: false, path: Math.random().toString(36).substring(7) });
                         }
@@ -186,21 +179,16 @@ electron_1.ipcMain.on('detect-sd-card', function (event) { return __awaiter(void
                 }
                 else {
                     _loop_1 = function (index, drive) {
-                        // console.log('index', index);
                         var mountPath = drive.mountpoints[0].path;
                         fs.readdir(mountPath, function (err, items) {
                             if (err) {
                                 console.log(err);
                             }
                             else {
-                                console.log('event--', event);
                                 try {
                                     if (win) {
-                                        console.log("itemes", items);
                                         if (items.includes('.papervideo')) {
                                             sdCardPath = mountPath + '/.papervideo/';
-                                            console.log('found on index', index);
-                                            // console.log('sends true');
                                             if (event) {
                                                 event.sender.send('detect-sd-card-complete', { hasPath: true, path: sdCardPath });
                                             }
@@ -210,7 +198,6 @@ electron_1.ipcMain.on('detect-sd-card', function (event) { return __awaiter(void
                                         }
                                         else {
                                             if (!items.includes('.papervideo') && index === drivesLength) {
-                                                console.log('sends false');
                                                 if (event) {
                                                     event.sender.send('detect-sd-card-complete', { hasPath: false, path: Math.random().toString(36).substring(7) });
                                                 }

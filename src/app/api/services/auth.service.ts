@@ -35,20 +35,24 @@ export class AuthService extends BaseApiService {
 
   // login
   authenticate(model: Partial<User>): any {
-    return this.http.post(`${this.url}/authenticate`, model).pipe(
+
+    return this.http.post(`https://api.aixunhuan.com.cn/api/v1.0/user/signin`, model).pipe(
       map((res: any) => {
-        if (res && res.id && res.rememberToken) {
+        console.log('res :', res);
+        
+        if (res && res.code === '0000') {
           sessionStorage.setItem('impersonating', 'false');
           this.storeToken = res.rememberToken;
-          if (res.isActive) {
-            this.router.navigate(['subjects']);
-          } else {
+          // if (res.isActive) {
+            this.router.navigate(['browser']);
+          // } else {
             // TODO: add login type to usermodel (ie. email, mobile, social media..)
             // TODO: confirm OTP does not work as the phone number param is not included.
-            const verifyRoute = model.loginCred === model.email ? 'confirm-email' : 'confirm-otp';
-            this.router.navigate(['auth', verifyRoute]);
-          }
+            // const verifyRoute = model.loginCred === model.email ? 'confirm-email' : 'confirm-otp';
+            // this.router.navigate(['auth', verifyRoute]);
+          // }
         }
+        return res;
       })
     );
   }

@@ -16,6 +16,7 @@ import { SubscriptionStatus } from '@models/enum';
 
 export interface User extends ParanoidBaseEntity {
   loginCred: string;
+  email_phone: string;
   password: string;
   firstName: string;
   lastName: string;

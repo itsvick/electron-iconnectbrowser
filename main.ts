@@ -23,7 +23,8 @@ function createWindow() {
     minWidth: 1180,
     minHeight: 780,
     webPreferences: {
-      nodeIntegration: false,
+      nodeIntegration: true,
+      webviewTag:true,
       contextIsolation: true,
       enableRemoteModule: false,
       preload: path.join(app.getAppPath(), 'dist/extraResources/preload', 'preload.js'),

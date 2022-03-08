@@ -1,0 +1,28 @@
+<div class="about_container">
+    <app-main-layout>
+      <div class="header-section about_header">
+        <div fxLayout="row" fxLayoutAlign="start center" style="width: 100%">
+            <div fxFlex="30%"><h2>Browser</h2></div>
+            <div fxFlex="50%">
+                <div fxLayout="row" fxLayoutAlign="start center" style="width: 100%" fxLayoutGap="10px">
+                    <app-input-styled fxFlex="70%" class="full-width" [formControl]="form.get('url')" 
+                    [required]="true" [placeholder]="'Url - https://www.example.com'">
+                    </app-input-styled>
+                    <app-loader-button style="padding-top: 5px !important;" fxFlex="15%" class="full-width" [label]="'Search'"  [defaultSize]="false" (clicked)="visitUrl()">
+                    </app-loader-button>
+                    <!-- [$loading]="$loading" -->
+                </div>
+            </div>
+        </div>  
+      </div>
+      <div *ngIf="url" class="main-content about_content">
+        <webview id="foo" [src]="url" style="display:inline-flex; width:100%; height:100%"></webview>
+      </div>
+
+      <div *ngIf="!url" class="main-content about_content" style="text-align: center;">
+        <div style="display:inline-flex; width:50%; height:50%; text-align: center; padding-top: 100px;">
+            There are currently no resources available in this connection. Please type your url in the url input and click search.
+        </div>
+      </div>
+    </app-main-layout>
+  </div>
