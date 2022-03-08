@@ -1,0 +1,14 @@
+@import "../../../../assets/css/theme/app-theme.scss";
+
+.cr {
+  margin-left: 125px;
+  text-align: left;
+  margin-right: auto;
+  font-size: 18px;
+  color: mat-color($custom, paynes-grey1);
+  margin-bottom: 30px;
+}
+
+.cr.center {
+  margin: 0px auto 16px auto !important;
+}

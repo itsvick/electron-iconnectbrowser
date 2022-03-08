@@ -1,0 +1,38 @@
+<mat-card fxLayout="column" fxLayoutAlign="start center"
+  [ngClass]="{'locked': subjectResource.locked, 'paper': isPaper, 'lesson': isLesson}" (click)="openResource()">
+
+  <!-- <mat-checkbox *ngIf="!subjectResource.locked"
+                  class="checkbox"
+                  [checked]="subjectResource.completed"
+                  (change)="completedChanged($event)"
+                  [ngClass]="{'paper': isPaper, 'lesson': isLesson}">
+        {{subjectResource.completed ? 'Completed' : 'Mark as complete'}}</mat-checkbox> -->
+  <mat-icon class="completed" *ngIf="subjectResource.completed">done</mat-icon>
+
+
+  <div [class]="!subjectResource.imageUrl ? 'img-placeholder' : 'img'" fxLayoutAlign="center center">
+    <ng-container *ngIf="subjectResource.locked">
+      <mat-icon>lock</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="!subjectResource.locked && !subjectResource.imageUrl">
+      <mat-icon>image</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="!subjectResource.locked && subjectResource.imageUrl">
+      <img alt="" [src]="subjectResource.imageUrl">
+    </ng-container>
+  </div>
+
+  <div class="title" [ngClass]="{'locked': subjectResource.locked, 'paper': isPaper, 'lesson': isLesson}"
+    *ngIf="isPaper" (click)="openResource()">
+    {{subjectResource.subTitle | titlecase }}</div>
+
+
+  <div class="sub-title" [ngClass]="{'locked': subjectResource.locked, 'paper': isPaper, 'lesson': isLesson}"
+    (click)="openResource()">
+    {{subjectResource.title ? subjectResource.title : 'To be determined'}}</div>
+
+
+  <div class="footer" [ngClass]="{'locked': subjectResource.locked, 'paper': isPaper, 'lesson': isLesson}">
+    {{!subjectResource.locked ? subjectResource.footerText : 'Locked'}}</div>
+
+</mat-card>

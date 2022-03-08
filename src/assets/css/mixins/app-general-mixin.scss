@@ -1,0 +1,62 @@
+// prefix mat mixins with c-app-XXXXXXXXX, this is so that our naming convention does not conflict with theirs
+@mixin app-general-global($theme) {
+  body > * {
+    color: mat-color($custom, paynes-grey1);
+  }
+
+  .link {
+    cursor: pointer;
+  }
+
+  .primary-link {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: mat-color($primary);
+  }
+
+  .dark-font {
+    color: mat-color($custom, paynes-grey1);
+  }
+
+  .primary-font {
+    color: mat-color($custom, christalle1);
+  }
+
+  .header-container {
+    padding: 35px !important;
+    background: #f0f0f0 !important;
+    padding-bottom: 50px !important;
+  }
+  
+  .header-title {
+    color: #404041 !important;
+    font-size: 28px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .header-description {
+    color: #8f8f93 !important;
+    font-size: 16px !important;
+  }
+
+  mat-tab-group.header-tab-group{
+    mat-tab-header{
+      border-bottom: none;
+    }
+  }
+
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+
+  .no-shadow {
+    box-shadow: none !important;
+  }
+}
+
+// The mixin below serves as an "export" for all the mixins declared above in this file.
+// Include all mixins declared above in this file here, then there is only 1 mixin to be imported into mixins-index instead of a couple.
+@mixin app-general-mixin($theme) {
+  @include app-general-global($theme);
+}

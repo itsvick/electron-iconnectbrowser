@@ -1,0 +1,45 @@
+<div fxFlex fxLayout="column" class="control">
+
+  <ng-container *ngIf="type === 'password'">
+    <div fxFlex fxLayout fxLayoutAlign="space-between">
+      <div class="label dark-font">{{ title }}</div>
+      <div *ngIf="resetEnabled" class="label link dark-font" (click)="forgotPassowrd()">Forgot Password?</div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="type !== 'password'">
+      <div class="label dark-font">{{ title }}</div>
+  </ng-container>
+
+  
+  <div fxFlex fxLayout="row" [ngSwitch]="type">
+    <input
+      *ngSwitchCase="'default'"
+      type="text"
+      class="primary-font"
+      style="width: 100%;"
+      (input)="toUpperCase()"
+      [formControl]="ngControl.control"
+      [placeholder]="placeholder"
+    />
+    <input
+      *ngSwitchCase="'number'"
+      type="number"
+      class="primary-font"
+      style="width: 100%;"
+      [formControl]="ngControl.control"
+      [placeholder]="placeholder"
+    />
+    <input
+    *ngSwitchCase="'password'"
+    type="password"
+    class="primary-font"
+    style="width: 100%;"
+    [formControl]="ngControl.control"
+    [placeholder]="placeholder"
+  />
+  </div>
+  <mat-error *ngIf="!ngControl.control.valid && ngControl.control.touched && showError">
+    {{ getValidationErrorMessage(ngControl.control, this.title) }}
+  </mat-error>
+</div>

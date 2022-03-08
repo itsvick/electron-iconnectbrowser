@@ -1,0 +1,88 @@
+/*------------*/
+$boxSpacing: 25px;
+$examThemeColor: #f89d3e;
+$lessonThemeColor: #20bec6;
+/*------------*/
+
+.video-layout {
+  display: flex;
+  width: 100%;
+
+  &_main {
+    width: 600px;
+    margin-right: $boxSpacing;
+    background-color: white;
+    box-shadow: 0 0 12px #e3e3e3;
+
+    .video-container {
+      position: relative;
+      height: 330px;
+
+      .video-source-container {
+        width: 600px;
+        height: 337px;
+        > app-video-viewer {
+          background-color: #404041
+        }
+      }
+
+      .video-buttons {
+        // position: absolute;
+        width: 100%;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #545454;
+
+        button {
+          display: flex;
+          align-items: center;
+          background-color: transparent;
+          outline: 0;
+          border: 0;
+          background-color: #404041;
+          width: calc(50% - (1px / 2));
+          height: 50px;
+          font-size: 13px;
+          line-height: 18px;
+          cursor: pointer;
+
+          &:last-child {
+            flex-direction: row-reverse;
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          &:disabled {
+            color: grey;
+          }
+        }
+      }
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &_sidebar {
+    // note: make a mixin for this background color and box shadow:
+    background-color: white;
+    box-shadow: 0 0 12px #e3e3e3;
+    padding: 20px;
+    min-width: calc((912px - 600px) - 25px);
+    height: fit-content;
+  }
+}
+
+.lesson {
+  color: $lessonThemeColor;
+}
+
+.exam {
+  color: $examThemeColor;
+}

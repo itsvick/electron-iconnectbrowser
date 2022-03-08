@@ -1,0 +1,85 @@
+<mat-toolbar>
+  <mat-toolbar-row style="height: auto; min-height: 64px;">
+    <div class="main">
+      <div class="main-header" [ngStyle]="{'margin-top':simpleHeader ? '15px' : '10px'}">
+        <div class="search">
+          <app-keyword-search *ngIf="!simpleHeader && myPaperIds" [paperIds]="myPaperIds"></app-keyword-search>
+        </div>
+        <div class="user">
+          <mat-icon *ngIf="!isOfflineMode && isOnline" matTooltip="It seems you have an internet connection." style="margin-right: 20px;">wifi</mat-icon>
+          <mat-icon *ngIf="!isOfflineMode && !isOnline" matTooltip="It seems you don't have an internet connection." style="margin-right: 20px;">wifi_off</mat-icon>
+          <mat-icon *ngIf="isOfflineMode" matTooltip="You are using offline mode." style="margin-right: 20px;">wifi_off</mat-icon>
+          <!-- this is just used to check a component  -->
+          <!-- <mat-icon color="black" [routerLink]="['/experimental']">whatshot</mat-icon> -->
+          <ng-container *ngIf="!isOfflineMode && isOnline">
+            <div *ngIf="profileImage" class="user-pic" [ngStyle]="{ 'background-image': 'url(' + profileImage + ')' }">
+            </div>
+            <div *ngIf="!profileImage" class="user-pic">
+              <mat-icon>account_circle</mat-icon>
+            </div>
+            <div class="user-name">{{ profileName }}</div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar-row>
+
+  <!-- <mat-toolbar-row *ngIf="!simpleHeader">
+    <div class="main">
+      <div class="main-filter">
+        <mat-icon class="flipped-icon">tune</mat-icon>
+        <mat-label>Filter by:</mat-label>
+        <div class="filter">
+          <app-filter-select [menu]="contentSelection"></app-filter-select>
+        </div>
+        <div class="filter">
+          <app-filter-select [menu]="difficultySelection"></app-filter-select>
+        </div>
+        <div class="filter">
+          <app-filter-select [menu]="questionsSelection"></app-filter-select>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar-row> -->
+</mat-toolbar>
+
+
+
+<!-- <mat-toolbar class="mat-elevation-z6">
+  <div class="main">
+    <div class="header" [ngClass]="simpleHeader ? 'simple' : 'extended'" style="margin-top: 10px;">
+      <div class="main-header">
+        <div class="search">
+          <mat-form-field *ngIf="!simpleHeader" appearance="fill" floatLabel="never" class="no-padding-bottom">
+            <mat-label>Search keywords</mat-label>
+            <input matInput type="text" />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="user">
+          <div *ngIf="profileImage" class="user-pic" [ngStyle]="{ 'background-image': 'url(' + profileImage + ')' }">
+          </div>
+          <div *ngIf="!profileImage" class="user-pic">
+            <mat-icon>account_circle</mat-icon>
+          </div>
+          <div class="user-name">{{ profileName }}</div>
+        </div>
+      </div>
+      <ng-container *ngIf="!simpleHeader">
+        <div class="main-filter">
+          <mat-icon class="flipped-icon">tune</mat-icon>
+          <mat-label>Filter by:</mat-label>
+          <div class="filter">
+            <app-filter-select [menu]="contentSelection"></app-filter-select>
+          </div>
+          <div class="filter">
+            <app-filter-select [menu]="difficultySelection"></app-filter-select>
+          </div>
+          <div class="filter">
+            <app-filter-select [menu]="questionsSelection"></app-filter-select>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</mat-toolbar> -->

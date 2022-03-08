@@ -1,0 +1,210 @@
+<app-main-layout customContent="false" *ngIf="isLoading">
+  <div class="header-section subjects_header">
+    <h2></h2>
+    <p></p>
+  </div>
+</app-main-layout>
+
+<div class="loader-container" style="height: 75%;" fxLayout="column" fxLayoutAlign="center center" *ngIf="isLoading">
+  <mat-spinner fxLayout="column" fxLayoutAlign="space-evenly center" color="accent" diameter="24"
+    style="margin: 0 auto;"></mat-spinner>
+</div>
+
+<ng-container *ngIf="showContent">
+<div fxLayout="row"
+fxLayoutAlign="start start" >
+  <button mat-button
+          fxHide.lt-md
+          class="back-button"
+          [routerLink]="['/subjects']">
+    <mat-icon>chevron_left</mat-icon>
+    Back
+  </button>
+  <div fxLayoutAlign="space-between"
+       fxFlexFill>
+    <mat-tab-group *ngIf="isLoading" fxFlexFill
+                   mat-align-tabs="start"
+       class="tab-group-container" ngClass.lt-md="mobile">
+      <mat-tab label="Loading...">
+        <mat-spinner color="accent"
+                     diameter="24"
+                     style="margin: 200px auto;"></mat-spinner>
+      </mat-tab>
+    </mat-tab-group>
+    <mat-tab-group *ngIf="hasPapers || hasLessons"
+                   (selectedTabChange)="changeTab($event)"
+                   [selectedIndex]="activeTab"
+                   fxFlexFill
+                   mat-align-tabs="start">
+
+      <mat-tab label="Exam Papers"
+               *ngIf="hasPapers">
+        <button fxHide fxShow.lt-md mat-button class="back-button mobile"
+                [routerLink]="['/subjects']">
+                <mat-icon>chevron_left</mat-icon>
+                Back
+        </button>
+        <div fxLayoutAlign="start start"
+             class="resource-container" ngClass.lt-md="mobile">
+          <div fxFlexFill
+               fxLayout="column"
+               fxLayoutAlign="start start"
+               fxLayoutAlign.lt-md="start center"
+               fxLayoutGap="24px">
+            <h2 class="mat-display-3"
+                *ngIf="selectedGrade && subject">
+              {{ subject.name }}
+              <span *ngIf="paperGrades.length > 1"
+                    [matMenuTriggerFor]="paperSubjects">
+                {{ title }}
+                <mat-icon>expand_more</mat-icon>
+              </span>
+              <span *ngIf="paperGrades.length === 1">{{ title }}</span>
+            </h2>
+            <div fxLayout="row"
+                 fxLayout.lt-lg="column"
+                 fxLayoutGap="24px"
+                 style="width: 100%;">
+
+              <!-- <div class="search-container" >
+                <app-keyword-search *ngIf="showContent"
+                                    [paperIds]="paperIds"></app-keyword-search>
+              </div> -->
+              <ng-template [ngTemplateOutlet]="languageSelector"></ng-template>
+              <!-- <button *ngIf="showContent && showUpgrade"
+                      ngClass.lt-md="mobile"
+                      mat-flat-button
+                      type="button"
+                      color="primary"
+                      class="upgrading-button"
+                      (click)="upgradeSubject()">
+                Upgrade
+              </button> -->
+            </div>
+
+            <div class="loader-container"
+                 *ngIf="!showContent">
+              <mat-spinner color="accent"
+                           diameter="24"
+                           style="margin: 200px auto;"></mat-spinner>
+            </div>
+            <div *ngIf="showContent"
+                 fxFlexFill
+                 fxLayout="row wrap"
+                 fxLayoutGap="30px"
+                 fxLayout.lt-sm="column"
+                 fxLayoutAlign.lt-sm="start center"
+                 fxLayoutAlign.lt-md="center center"
+                 >
+              <app-subject-resource-card *ngFor="let paper of paperResources"
+                                         [subjectResource]="paper"
+                                         (changed)="paperCompleted($event)">
+              </app-subject-resource-card>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Lesson Worksheets"
+               *ngIf="hasLessons">
+        <button fxHide fxShow.lt-md mat-button class="back-button mobile"
+               [routerLink]="['/subjects']">
+               <mat-icon>chevron_left</mat-icon>
+               Back
+        </button>
+        <div fxLayout="column"
+             fxLayoutAlign="start start"
+             class="resource-container" ngClass.lt-md="mobile">
+          <div fxFlexFill
+               fxLayout="column"
+               fxLayoutAlign="start start"
+               fxLayoutAlign.lt-md="start center"
+               fxLayoutGap="24px">
+            <h2 class="mat-display-3" *ngIf="selectedGrade && subject">{{ subject.name }}
+              <span *ngIf="lessonGrades.length > 1"
+                    [matMenuTriggerFor]="lessonSubjects">
+                {{ title }}
+                <mat-icon>expand_more</mat-icon>
+              </span>
+              <span *ngIf="lessonGrades.length === 1">{{ title }}</span>
+            </h2>
+            <div fxLayout="row"
+                 fxLayout.lt-lg="column"
+                 fxLayoutGap="24px"
+                 style="width: 100%;">
+              <!-- <app-search style="width: 100%;"
+                          *ngIf="showContent"
+                          [items]="lessonItems"
+                          (clear)="clearLessonSearch()"
+                          (searchPhraseChanged)="lessonSearchChanged($event)"
+                          (valueSelected)="lessonSelected($event)">
+              </app-search> -->
+              <ng-template [ngTemplateOutlet]="languageSelector"></ng-template>
+            </div>
+            <!-- <div fxLayout="row"
+                 *ngIf="showContent"
+                 fxLayout.lt-lg="column"
+                 fxLayoutGap="24px"
+                 style="width: 100%;">
+              <mat-checkbox (change)="setStatus($event.checked)" [checked]="searchLessonKeywords">Search By Keywords</mat-checkbox>
+            </div> -->
+            <div *ngIf="isLoading">
+              <mat-spinner color="accent"
+                           diameter="24"
+                           style="margin: 200px auto;"></mat-spinner>
+            </div>
+            <div *ngIf="showContent"
+            fxFlexFill
+            fxLayout="row wrap"
+            fxLayoutGap="30px"
+            fxLayout.lt-sm="column"
+            fxLayoutAlign.lt-sm="start center"
+            fxLayoutAlign.lt-md="center center"
+            ngClass.sm="lesson-container-mobile">
+              <app-subject-resource-card *ngFor="let lesson of lessonResources"
+                                         [subjectResource]="lesson"
+                                         (changed)="lessonCompleted($event)">
+              </app-subject-resource-card>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+
+    <mat-menu #paperSubjects="matMenu">
+      <ng-container *ngIf="hasPapers">
+        <button *ngFor="let grade of paperGrades"
+                (click)="setActiveGrade(grade)"
+                mat-menu-item>{{ grade.name }}</button>
+      </ng-container>
+    </mat-menu>
+
+
+    <mat-menu #lessonSubjects="matMenu">
+      <ng-container *ngIf="hasLessons">
+        <button *ngFor="let grade of lessonGrades"
+                (click)="setActiveGrade(grade)"
+                mat-menu-item>{{ grade.name }}</button>
+      </ng-container>
+    </mat-menu>
+  </div>
+
+</div>
+
+
+<ng-template #languageSelector>
+  <div fxFlex="180px" *ngIf="languages && showContent && languages.length > 1">
+    <mat-select class="mat-card mini-selector"
+                [disabled]="languages.length === 1"
+                placeholder="Language"
+                (valueChange)="changeLanguage($event)"
+                [(value)]="selectedLanguageId">
+      <mat-option *ngFor="let language of languages"
+                  [value]="language.id">
+        {{ language.name }}
+      </mat-option>
+    </mat-select>
+  </div>
+</ng-template>
+</ng-container>

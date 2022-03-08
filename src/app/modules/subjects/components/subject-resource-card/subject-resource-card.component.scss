@@ -1,0 +1,122 @@
+mat-card {
+  padding: 10px;
+  >* {
+    position: absolute;
+  }
+  &.locked {
+    background-color: #F0F0F0;
+    box-shadow: none;
+  }
+  &:not(.locked) {
+    cursor: pointer;
+  }
+}
+
+mat-card.lesson {
+  width: 350px;
+  height: 150px;
+}
+
+mat-card.paper {
+  width: 350px;
+  height: 150px;
+}
+
+mat-card.locked {
+  border: 1px solid #d7d7d7;
+  background-color: #f4f4f4;
+  box-shadow: none !important;
+}
+
+.checkbox {
+  top: 10px;
+  left: 12px;
+  font-size: 13px;
+  text-align: left;
+}
+
+
+
+.img-placeholder {
+  height: 64px;
+  width: 64px;
+  background-color: #bcbcbc;
+  border-radius: 50%;
+  margin-top: 8px;
+  top: 10px;
+  left: 25px;
+
+  mat-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 48px;
+    color: #f4f4f4;
+  }
+}
+
+.img {
+  margin-top: 8px;
+  top: 10px;
+  left: 25px;
+
+  img {
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.title {
+  width: 180px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  color: #404041;
+  // text-align: center;
+
+  &:not(.locked) {
+    cursor: pointer;
+  }
+}
+
+.sub-title {
+  top: 112px;
+  left: 24px;
+  color: #a7a3a3;
+  width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title.paper {
+  top: 85px;
+  left: 24px;
+  text-align: left;
+  width: 85%;
+}
+
+.title.lesson {
+  top: 85px;
+  left: 24px;
+  text-align: left;
+  width: 85%;
+  font-size: 17px;
+}
+
+.footer {
+  color: #bcbcbc;
+  bottom: 14px;
+  text-align: end;
+  width: 100px;
+  right: 12px;
+  font-size: 16px;
+}
+
+.locked {
+  color: #C3C3C3 !important;
+}
+
+.completed { 
+  right: 12px;
+}

@@ -1,0 +1,160 @@
+@import "../../../../assets/css/theme/app-theme.scss";
+
+:host {
+  width: 100%;
+}
+
+.question-header {
+  margin-left: 16px;
+  margin-right: 16px;
+  text-align: left;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: 0.23px;
+  color: #404041;
+  opacity: 1;
+}
+
+.play-button {
+  width: 45px;
+  height: 45px;
+
+  mat-icon {
+    transform: scale(1.75);
+  }
+}
+
+.question-paper {
+  &.mobile {
+    margin-left: 16px;
+  }
+}
+
+.exam-mode {
+  box-shadow: inset 0px 0px 1px 1px #421e6c29 !important;
+}
+
+.parent-question {
+  width: 90% !important;
+  min-height: 100px;
+  box-shadow: none !important;
+  background-color: #fafafa;
+  &.mobile {
+    width: 100% !important;
+  }
+
+  mat-card-content {
+    margin-left: 16px;
+
+    .parent-question-description {
+      text-align: left;
+      font-size: 20px;
+      letter-spacing: 0;
+      color: #404041;
+      opacity: 1;
+      max-width: 80%;
+      padding-top: 5px;
+
+      .image-container {
+        margin-right: 10px;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  mat-card-title {
+    text-align: left;
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #421e6c;
+    opacity: 1;
+  }
+
+  mat-card-subtitle {
+    text-align: left;
+    font-size: 18px;
+    letter-spacing: 0;
+    color: #404041;
+    opacity: 1;
+    margin-bottom: 0;
+  }
+}
+
+.sub-question {
+  width: 90%;
+  min-height: 160px;
+  padding: 14px;
+  &.tablet {
+    margin: 0px 12px;
+  }
+  &.mobile {
+    width: auto;
+    margin: 0px 12px;
+  }
+  &--pre-req {
+    @extend .sub-question;
+    box-shadow: none !important;
+    background-color: #d5d5d5;
+  }
+
+  mat-card-content {
+    margin-left: 16px;
+
+    .sub-question-description {
+      text-align: left;
+      font-size: 18px;
+      letter-spacing: 0;
+      color: #666666;
+      opacity: 1;
+      // margin-left: 24px;
+      max-width: 80%;
+      // padding-top: 5px;
+      &.mobile {
+        max-width: 100%;
+      }
+    }
+  }
+
+  mat-card-title {
+    text-align: left;
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #421e6c;
+    opacity: 1;
+  }
+
+  mat-card-subtitle {
+    text-align: left;
+    font-size: 18px;
+    letter-spacing: 0;
+    color: #404041;
+    opacity: 1;
+    margin-left: 24px;
+    margin-bottom: 0;
+  }
+}
+
+.memo-link {
+  color: #e31565;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.question-image {
+  max-width: 80%;
+  margin: 12px 0px;
+}
+
+.mark {
+  font-size: 14px;
+  max-width: calc(100% - 145px);
+  text-align: end;
+  &.mobile {
+    text-align: center;
+    max-width: unset;
+  }
+}

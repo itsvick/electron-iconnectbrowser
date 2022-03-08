@@ -1,0 +1,45 @@
+<mat-spinner color="accent" diameter="24" style="margin: 0 auto;" *ngIf="!showContent"></mat-spinner>
+<div *ngIf="showContent" fxLayout="column">
+  <div class="video-layout">
+    <div class="video-layout_main">
+      <div class="video-container">
+        <div class="video-source-container">
+          <app-video-viewer *ngIf="jingleUrl || videoUrl" fxFlexFill class="video"
+            [videoUrl]="jingleUrl.url || videoUrl.url" [autoplay]="autoplay" (videoEnd)="videoEnd($event)">
+          </app-video-viewer>
+        </div>
+        <div class="video-buttons">
+          <button [ngClass]="theme" (click)="previousQuestion.emit()" [disabled]="prevDisabled">
+            <mat-icon>chevron_left</mat-icon>
+            Previous question
+          </button>
+          <button [ngClass]="theme" (click)="nextQuestion.emit()" [disabled]="nextDisabled">
+            <mat-icon>chevron_right</mat-icon>
+            Next question
+          </button>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="video-main-content">
+          <mat-checkbox>Mark question as completed</mat-checkbox>
+          <app-parent-question-accordion [parentQuestion]="parentQuestion"></app-parent-question-accordion>
+          <!-- <a href="" class="exam-link">Previous question result</a> -->
+          <h2 class="question-heading">Question {{ question.questionNumber }}</h2>
+          <p class="video-overview">Video {{ videoNumber }} of {{ question.videoCount }}</p>
+          <mathjax [content]="question.questionDescription ? question.questionDescription : 'No question description'"></mathjax>
+
+          <div *ngIf="hasImage(question)">
+            <img style="max-width: 550px; margin-top: 12px;" class="question-image" [src]="question.questionImage" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="video-layout_sidebar">
+      <div class="video-sidebar-content">
+        <app-pre-requisites [preRequisites]="question.preRequisites" [theme]="theme"></app-pre-requisites>
+        <h2>Question answer</h2>
+        <button mat-button class="link-button" [ngClass]="theme" [disabled]="!hasMemo" (click)="showMemo()">Show memo</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+@import "@angular/material/theming";
+@import "../typography.scss";
+@import "./colors.scss";
+
+$primary: mat-palette($md-primary);
+$accent: mat-palette($md-secondary);
+$warn: mat-palette($mat-red);
+$neutral: mat-palette($md-neutral);
+
+$typography-config: mat-typography-config();
+
+$app-custom: mat-palette($custom-colors, custom);
+
+$theme: mat-light-theme($primary, $accent, $warn) !default;
+$theme: map_merge(
+  $theme,
+  (
+    custom: $app-custom
+  )
+);
+
+$custom: map-get($theme, custom);
+

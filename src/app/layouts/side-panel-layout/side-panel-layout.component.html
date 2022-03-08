@@ -1,0 +1,129 @@
+<div class="side-panel-layout">
+  <div class="side-panel">
+    <div class="image-container">
+      <img src="./assets/images/Vector Smart Object@2x.png" />
+    </div>
+
+    <div class="nav">
+      <ng-container *ngFor="let item of navItems">
+        <a class="nav-item" [ngClass]="item.icon === 'insert_drive_file' ? 'active' : null" [routerLink]="[item.path]">
+          <mat-icon color="white">{{ item.icon }}</mat-icon>
+          <span>{{ item.title }}</span>
+        </a>
+      </ng-container>
+    </div>
+
+    <div class="sign-out">
+      <!-- using a random icon, as couldn't find one the matched in design -->
+      <a class="nav-item" (click)="killSession()">
+        <mat-icon color="white">trending_flat</mat-icon>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+  <div class="main">
+    <div class="header" [ngClass]="simpleHeader ? 'simple' : 'extended'">
+      <div class="main-header">
+        <div class="search">
+          <mat-form-field appearance="fill" floatLabel="never" class="no-padding-bottom">
+            <mat-label>Search keywords</mat-label>
+            <input matInput type="text" />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="user">
+          <div class="user-pic" [ngStyle]="{ 'background-image': 'url(' + profileImage + ')' }"></div>
+          <div class="user-name">{{ profileName }}</div>
+        </div>
+      </div>
+      <ng-container *ngIf="!simpleHeader">
+        <div class="main-filter">
+          <mat-icon class="flipped-icon">tune</mat-icon>
+          <mat-label>Filter by:</mat-label>
+          <div class="filter">
+            <app-filter-select [menu]="contentSelection"></app-filter-select>
+          </div>
+          <div class="filter">
+            <app-filter-select [menu]="difficultySelection"></app-filter-select>
+          </div>
+          <div class="filter">
+            <app-filter-select [menu]="questionsSelection"></app-filter-select>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="content-wrapper">
+      <!-- this header must update if the filter inside the main header section is visible -->
+      <div class="content-header" [ngClass]="viewingVideo ? 'video-layout' : null">
+        <ng-container *ngIf="viewingVideo">
+          <!-- <app-video-layout theme="exam"> -->
+          <!-- video src: -->
+          <!-- <source src="https://youtu.be/mBIby1i2oTs" /> -->
+
+          <!-- main content for video section: -->
+          <!-- <div class="video-main-content">
+              <mat-checkbox>Mark question as completed</mat-checkbox>
+              <a href="" class="exam-link">Previous question result</a>
+              <h2>Question title</h2>
+              <p>Lorem ipsum bro</p>
+            </div> -->
+
+          <!-- content for sidebar section: -->
+          <!-- <div class="video-sidebar-content">
+              <h2>Pre-requisite lessons</h2>
+              <a href="" class="exam-link">Equations</a>
+              <a href="" class="exam-link">Simplification</a>
+              <h2>Question answer</h2>
+              <a href="" class="exam-link">Show memo</a>
+            </div>
+          </app-video-layout> -->
+
+          <app-video-layout theme="lesson">
+            <!-- video src: -->
+            <source src="https://youtu.be/mBIby1i2oTs" />
+
+            <!-- main content for video section: -->
+            <div class="video-main-content">
+              <div class="side-by-side-content">
+                <mat-checkbox>Mark lesson as complete</mat-checkbox>
+                <button mat-stroked-button>Download PDF</button>
+              </div>
+              <h2>Applications of quadrilaterals</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore.
+              </p>
+            </div>
+
+            <!-- content for sidebar section: -->
+            <div class="video-sidebar-content">
+              <h2>Bookmarks</h2>
+              <p>Basic problem <span>00:01:04</span></p>
+              <p>Domain and range <span>00:01:04</span></p>
+              <p>Average gradient <span>00:01:04</span></p>
+              <a href="" class="lesson-link">Find related exam questions</a>
+
+              <h2>Pre-requisite lessons</h2>
+              <a href="" class="lesson-link">Equations</a>
+              <a href="" class="lesson-link">Simplification</a>
+            </div>
+          </app-video-layout>
+        </ng-container>
+
+        <ng-container *ngIf="!viewingVideo">
+          <h3
+            class="header-subtitle no-margin"
+            [ngClass]="headerSubtitle.status && simpleHeader ? headerSubtitle.status : null"
+          >
+            {{ headerSubtitle.text }}
+          </h3>
+          <h2 class="header-title no-margin">{{ headerTitle }}</h2>
+        </ng-container>
+      </div>
+
+      <ng-container *ngIf="!viewingVideo">
+        <div class="content"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>

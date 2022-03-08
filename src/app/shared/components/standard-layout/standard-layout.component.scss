@@ -1,0 +1,20 @@
+.content {
+  background-color: #fafafa;
+  width: 100%;
+  height: calc(100% - 125px);
+
+  &-header {
+    min-height: 115px;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 5px 30px;
+
+    .header {
+      &-subtitle {
+        &.pink {
+          color: #e31565;
+        }
+      }
+    }
+  }
+}

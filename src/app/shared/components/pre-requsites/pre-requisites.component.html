@@ -1,0 +1,14 @@
+<div class="pre-requisite-lessons">
+  <h2>
+    Pre-Requisite Lessons
+  </h2>
+  <div *ngIf="preRequisites && preRequisites.length > 0; else notShow">
+    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8px">
+      <button *ngFor="let preRequisite of preRequisites" mat-button class="link-button" [ngClass]="theme"
+        (click)="lessonLink(preRequisite)"> {{ preRequisite.name }}</button>
+    </div>
+  </div>
+  <ng-template #notShow>
+    <a style="padding-left:0px;">None</a>
+  </ng-template>
+</div>

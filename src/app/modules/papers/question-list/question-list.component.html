@@ -1,0 +1,136 @@
+<div fxLayout="column" class="full-width">
+  <button fxHide.lt-sm
+          mat-button
+          class="back-button"
+          ngClass.lt-sm="mobile"
+          (click)="back()">
+    <mat-icon>chevron_left</mat-icon>
+    Back
+  </button>
+  <div fxHide fxShow.lt-sm fxLayout="row" fxLayoutAlign="space-between start">
+    <button mat-button
+    class="back-button"
+    ngClass.lt-sm="mobile"
+    (click)="back()">
+    <mat-icon>chevron_left</mat-icon>
+      Back
+    </button>
+
+    <mat-slide-toggle style="margin-top: 21px;" (toggleChange)="examToggled()">Exam Mode</mat-slide-toggle>
+  </div>
+  <div class="loader-container"
+       fxLayout="column"
+       fxLayoutAlign="center center"
+       *ngIf="isLoading">
+    <mat-spinner fxLayout="column"
+                 fxLayoutAlign="space-evenly center"
+                 color="accent"
+                 diameter="24"
+                 style="margin: 0 auto;"></mat-spinner>
+  </div>
+
+  <div fxLayout="row"
+       class="container full-width"
+       fxFlexAlign="start start"
+       *ngIf="showContent">
+    <div fxLayout="column" class="full-width">
+      <div *ngIf="pageReachedViaSearch"
+           fxLayout="row"
+           fxLayoutAlign="space-between center"
+           class="paper-header"
+           ngClass.lt-md="mobile">
+        <div fxLayout="column"
+             fxLayoutGap="12px">
+          <h1>Search results for :</h1>
+          <div fxLayout="row"
+               *ngIf="urlKeywords">
+            <p class="label-paragraph">Keywords:</p>
+            <mat-chip-list aria-label="keyword selection">
+              <mat-chip *ngFor="let item of urlKeywords"
+                        color="accent">
+                {{ item.name }}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <div fxLayout="row"
+               *ngIf="urlDifficulties">
+            <p class="label-paragraph">Difficulty:</p>
+            <mat-chip-list aria-label="keyword selection">
+              <mat-chip *ngFor="let number of urlDifficulties"
+                        color="accent">
+                {{ number }}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <p class="label-paragraph"
+             *ngIf="urlDifficulties">
+            Include questions marked as complete: <strong>{{ urlInclCompleted ? 'Yes' : 'No' }}</strong>
+          </p>
+        </div>
+        <!-- <div fxLayout="column">
+         <mat-slide-toggle (toggleChange)="examToggled($event)">Exam Mode</mat-slide-toggle>
+         <button mat-raised-button class="download-button" color="primary" (click)='downloadPdf()'
+           [disabled]="!canDownloadPdf">Download PDF</button> -->
+        <!-- <mat-checkbox class="all-complete-checkbox" (change)="!isMarking ? markAllComplete($event) : null"
+           [checked]="getAllCheckStatus">
+           {{allCompleted ? 'Mark all as uncompleted' : 'Mark all as completed'}}</mat-checkbox> -->
+        <!-- </div> -->
+      </div>
+
+      <div *ngIf="!pageReachedViaSearch"
+           fxLayout="row"
+           fxLayout.lt-sm="column"
+           fxLayoutAlign="space-between center"
+           fxLayoutAlign.lt-sm="center start"
+           class="paper-header"
+           ngClass.lt-md="mobile">
+        <div fxLayout="column">
+          <h1>{{ paper.month | titlecase }} {{ paper.year }} {{paper.name}} Paper {{ paper.paperNo }}</h1>
+          <p>Estimated time for Paper {{ paper.paperNo }}: {{ getCompletionTime() }}</p>
+        </div>
+        <div fxLayout="column" fxLayoutAlign.lt-sm="center start">
+          <mat-slide-toggle fxHide.lt-sm (toggleChange)="examToggled()">Exam Mode</mat-slide-toggle>
+
+          <button mat-raised-button
+                  class="download-button"
+                  color="primary"
+                  (click)="downloadPdf()"
+                  [disabled]="!canDownloadPdf">
+            Download PDF
+          </button>
+          <!-- <mat-checkbox class="all-complete-checkbox" (change)="!isMarking ? markAllComplete($event) : null"
+           [checked]="getAllCheckStatus">
+           {{allCompleted ? 'Mark all as uncompleted' : 'Mark all as completed'}}</mat-checkbox> -->
+        </div>
+      </div>
+      <div class="loader-container"
+           fxLayout="column"
+           fxLayoutAlign="center center"
+           *ngIf="isLoadingPaper">
+        <mat-spinner fxLayout="column"
+                     fxLayoutAlign="space-evenly center"
+                     color="accent"
+                     diameter="24"
+                     style="margin: 0 auto;"></mat-spinner>
+      </div>
+      <div *ngIf="!isLoadingPaper"
+           fxLayout="column"
+           fxLayoutAlign="start start"
+           fxLayoutGap="{{ isExamMode ? '0px' : '30px' }}">
+        <div class="search-result-count" ngClass.lt-md="mobile"
+             *ngIf="pageReachedViaSearch">{{ uniqueQuestionsCount }} Questions found
+        </div>
+
+        <app-question-list-items class="full-width-container"
+                                 fxLayoutAlign="start start"
+                                 fxLayoutGap="{{ isExamMode ? '0px' : '30px' }}"
+                                 [paperListItems]="paperItems"
+                                 [isCompleted]="getCheckStatus"
+                                 [isExamMode]="isExamMode"
+                                 [reachedViaSearch]="pageReachedViaSearch"
+                                 (markAsComplete)="markAsComplete($event.checked, $event.questionId)">
+        </app-question-list-items>
+      </div>
+    </div>
+  </div>
+</div>

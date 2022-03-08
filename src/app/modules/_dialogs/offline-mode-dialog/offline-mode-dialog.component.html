@@ -1,0 +1,30 @@
+<div mat-dialog-title fxLayout="row">
+    <h2>Offline Mode</h2>
+    <div style="margin-left: auto; margin-top: -5px; cursor: pointer;">
+      <mat-icon class="cursor" mat-dialog-close>close</mat-icon>
+    </div>
+</div>
+
+<div mat-dialog-content>
+  <p><strong>Note:</strong>Your app will not be updated in offline mode.</p>
+
+  <p>If you have a SD card connected, you can continue via the resources tab.</p>
+
+  <p style="margin-bottom: 35px;">Please login with a registered account as soon as you are online.</p>
+
+  <app-loader-button 
+  style="max-width: 300px; margin: 0 auto 18px;"
+  [label]="'Continue Offline'"
+  [defaultSize]="false"
+  (clicked)="continue()">
+  </app-loader-button>
+  <app-loader-button 
+  style="max-width: 300px; margin: 0 auto;"
+  [label]="'Back'"
+  [color]="'aqua'"
+  [defaultSize]="false"
+  (clicked)="onNoClick()">
+  </app-loader-button>
+</div>
+
+

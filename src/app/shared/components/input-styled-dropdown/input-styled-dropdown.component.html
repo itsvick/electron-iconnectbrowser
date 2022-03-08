@@ -1,0 +1,81 @@
+<ng-container *ngIf="items">
+    <div fxFlex fxLayout="column" class="select-container">
+        <div fxFlex fxLayout="column" class="control">
+            <div class="label dark-font">{{title}}</div>
+            <div fxFlex fxLayout="row" [ngClass]="{'valid': isValid}">
+                <!-- Search needs an input box -->
+                <div *ngIf="type === 'search'" class="search-input-container" fxFlex fxLayout="row"
+                    fxLayoutAlign="start start">
+                    <mat-icon matPrefix>search</mat-icon>
+                    <input class="primary-font full-border" style="width: 95%" [disabled]="disabled" [formControl]="searchControl"
+                        [matAutocomplete]="auto" [placeholder]="placeholder" (blur)="open = false"
+                        (click)="openSelection()" #sf />
+                    <mat-icon matSufix class="clear"
+                        *ngIf="(searchControl.value !== null && searchControl.value !== '') || lastSelectedItem"
+                        (click)="clearSearch()">
+                        close</mat-icon>
+                </div>
+
+                <!-- Select is built with divs -->
+                <div *ngIf="type === 'select'" tabindex="1" fxFlex class="can-open box link"
+                    [ngClass]="{'focus': open, 'placeholder-font': !lastSelectedItem && !initialValue, 'disabled': disabled}"
+                    (click)="openSelection()" fxLayoutAlign="start center" (blur)="testOnBlur($event)">
+                    <div class="value">{{lastSelectedItem ? lastSelectedItem[displayMainKey] : placeholder}}</div>
+                </div>
+
+                <div *ngIf="type === 'select'" fxFlex="50px" class="chev link" [ngClass]="{'disabled': disabled}" (click)="openSelection()">
+                    <mat-icon [class.open]="open" class="can-open" (click)="openSelection()">
+                        {{ open ? 'expand_less' : 'expand_more'}}</mat-icon>
+                </div>
+
+            </div>
+            <mat-error *ngIf="!control.valid && control.touched">
+                {{ getValidationErrorMessage(control, this.title, 'select') }}
+            </mat-error>
+        </div>
+
+        <mat-autocomplete [panelWidth]="autocompleteWidth" #auto="matAutocomplete" class="selection mat-card" fxFlexFill
+            fxLayout="column" fxLayoutGap="6px">
+            <ng-container *ngIf="shouldDisplayItems">
+                <mat-option *ngFor="let item of items | async" (click)="onSelected(item)"
+                    [value]="item[displayMainKey]">
+                    <span *ngIf="displayPrefixKey">{{ item[displayPrefixKey] }} - </span>
+                    <span>{{ item[displayMainKey] }}</span>
+                    <span *ngIf="displaySuffixKey"> - {{ item[displaySuffixKey] }}</span>
+                </mat-option>
+                <!-- <mat-option *ngIf="!required">
+                    <span>Clear selection</span>
+                </mat-option> -->
+            </ng-container>
+            <mat-option *ngIf="!hasData && !isLoading">
+                <span>No Items Found</span>
+            </mat-option>
+            <mat-option *ngIf="!showContent && isLoading">
+                <mat-spinner color="primary" diameter="24" style="margin: 0 auto;"></mat-spinner>
+            </mat-option>
+        </mat-autocomplete>
+
+        <div #singleSelection *ngIf="open && type === 'select'" [ngStyle]="{'width': autocompleteWidth}" class="selection mat-card single-selection" fxFlex
+            fxLayout="column" fxLayoutGap="6px">
+            <!-- this clear is handled with the blur -->
+            <mat-option class="clear-option" *ngIf="hasItems" (click)="clearSearch()">
+                <span>Clear selection</span>
+            </mat-option>
+            <mat-option class="clear-option" *ngIf="!hasItems" (click)="clearSearch()">
+                <span>No Items Found</span>
+            </mat-option>
+            <mat-option *ngFor=" let item of items | async" (click)="onSelected(item)" [value]="item[displayMainKey]">
+                <span *ngIf="displayPrefixKey">{{ item[displayPrefixKey] }} - </span>
+                <span>{{ item[displayMainKey] }}</span>
+                <span *ngIf="displaySuffixKey"> - {{ item[displaySuffixKey] }}</span>
+            </mat-option>
+            <!-- 
+            <div *ngFor="let item of items | async; let i = index" class="selection-item can-be-selected"
+                [class.item-not-selected]="item === lastSelectedItem || item === initialValue"
+                (click)="onSelected(item)" fxLayoutAlign="center center">
+                <div style="width: 85%;" class="value">{{item[displayMainKey]}}</div>
+            </div> -->
+        </div>
+
+    </div>
+</ng-container>

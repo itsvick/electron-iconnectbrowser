@@ -1,0 +1,49 @@
+<div fxFlex fxLayout="column" appClickOutside (clickedOutside)="open = false" [class.outline]="outline">
+  <div class="box" fxLayout="row" [class.bottom-border]="outline">
+    <div class="icon" *ngIf="hasIcon" [ngClass]="{
+                'orange-full': color === 'orange',
+                'green-full': color === 'green',
+                'blue-full': color === 'blue',
+                'primary-full': color === 'primary',
+                'accent-full': color === 'accent'}">
+      <mat-icon>{{icon}}</mat-icon>
+    </div>
+    <div fxFlex class="can-open box" [class.bottom-border]="outline" (click)="openSelection()" fxLayoutAlign="center center">
+      <div class="value">{{displayText}}</div>
+    </div>
+    <div class="chev">
+      <mat-icon [class.open]="open" class="can-open" (click)="openSelection()">
+        {{ open ? 'expand_less' : 'expand_more'}}</mat-icon>
+    </div>
+  </div>
+
+  <div #singleSelection *ngIf="open && type === 'single'" class="selection mat-card"
+       fxLayoutGap="6px" [class.over]="over">
+    <div *ngFor="let item of items;" class="selection-item can-be-selected"
+         [class.item-not-selected]="!selection.isSelected(item)" [ngClass]="{
+                'orange-light': color === 'orange',
+                'green-light': color === 'green',
+                'blue-light': color === 'blue',
+                'primary-light': color === 'primary',
+                'accent-light': color === 'accent'}" (click)="onSelect(item)" fxLayoutAlign="center center">
+      <div style="width: 85%;" class="value">{{item[key]}}</div>
+    </div>
+  </div>
+
+  <div #multipleSelection *ngIf="open && type === 'multiple'" class="selection mat-card" fxLayout="column"
+       fxLayoutGap="6px" [class.over]="over">
+    <label for="{{'cb-' + i}}" *ngFor="let item of items; let i = index" class="selection-item"
+           [class.item-not-selected]="!selection.isSelected(item)" [ngClass]="{
+                'orange-light': color === 'orange',
+                'green-light': color === 'green',
+                'blue-light': color === 'blue',
+                'primary-light': color === 'primary',
+                'accent-light': color === 'accent'}" fxLayoutAlign="center center" (click)="onSelect(item)">
+      <div style="width: 100%; padding-left: 12px;" class="can-be-selected">
+        <mat-checkbox [checked]="selection.isSelected(item)" id="{{'cb-' + i}}" (click)="$event.preventDefault()">
+          <div>{{item[key]}}</div>
+        </mat-checkbox>
+      </div>
+    </label>
+  </div>
+</div>

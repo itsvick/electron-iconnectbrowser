@@ -1,0 +1,18 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav-content #content fxLayout="column">
+    <app-static-header> </app-static-header>
+    <div class="banner">
+      Welcome to the new Paper Video website. Please note that some things are still under construction, so if something
+      doesn't work exactly as expected or a feature is missing, please excuse us for now. We plan on having everything
+      working by the end of June. We will also be adding more content through the course of June.
+    </div>
+
+    <div fxFlex fxLayout="column" class="static-content-container">
+      <main fxFlex>
+        <router-outlet></router-outlet>
+      </main>
+
+      <app-footer></app-footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

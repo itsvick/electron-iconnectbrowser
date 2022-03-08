@@ -1,0 +1,18 @@
+<div class="subject-container">
+  <ng-container *ngFor="let card of cards">
+    <div class="subject-card" [ngClass]="card.subscription">
+      <ng-container *ngIf="card.subscription === 'standard'">
+        <div class="upgrade-block">
+          Upgrade
+        </div>
+      </ng-container>
+      <div class="content-container">
+        <div class="card-icon" [ngStyle]="{ 'background-image': 'url(' + card.icon + ')' }"></div>
+        <h4>{{ card.title }}</h4>
+      </div>
+      <div class="duration">
+        <p>Time {{ card.duration }}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>

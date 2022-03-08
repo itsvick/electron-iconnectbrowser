@@ -1,0 +1,148 @@
+@import '../../../../assets/css/theme/app-theme.scss';
+
+.video-card {
+  width: 900px;
+  position: relative;
+
+  .close {
+    position: absolute;
+    top: 14px;
+    right: 22px;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+}
+
+.video {
+  background: #485c72 0% 0% no-repeat padding-box;
+  outline: 0;
+}
+
+.content {
+  padding-left: 60px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+}
+
+.video-overview {
+  color: #e31565;
+  margin: 0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nav-button-container{
+  background-color: mat-color($custom-colors, paynes-grey1);
+}
+
+.question-nav-button-prev {
+  color: white;
+  width: 100%;
+  text-align: left;
+  height: 50px;
+}
+
+.divider {
+  background: #545454;
+  width: 4px;
+  height: 50px;
+}
+
+.question-nav-button-next {
+  color: white;
+  width: 100%;
+  text-align: right;
+  height: 50px;
+}
+
+.question-title {
+  text-align: left;
+  font: Regular 12px/17px Proxima Nova;
+  letter-spacing: 0.23px;
+  color: #404041;
+  margin: 20px 0 5px;
+}
+
+%question-heading {
+  text-align: left;
+  font: Regular-Bold 24px/24px ProximaNova-Semibold;
+  letter-spacing: 0;
+  color: #404041;
+  margin-bottom: 0;
+  margin-top: 12px;
+}
+
+.question-heading {
+  @extend %question-heading;
+}
+
+.question-subheading {
+  text-align: left;
+  font: Regular 13px/18px Proxima Nova;
+  letter-spacing: 0.25px;
+  color: #404041;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.question-description {
+  text-align: left;
+  font: Regular 20px/24px ProximaNova-Regular;
+  letter-spacing: 0;
+  color: #404041;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.pre-requisite-lessons {
+  background-color: #f5f4f4;
+  margin: 8px;
+  width: 280px;
+  min-height: 170px;
+  border-radius: 4px;
+  padding-bottom: 16px;
+  padding-left: 4px;
+  padding-right: 4px;
+
+  a {
+    font-size: 18px;
+    color: #404041;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-weight: 400;
+  }
+
+  h2 {
+    @extend %question-heading;
+    font-size: 20px;
+    padding: 16px;
+  }
+}
+
+.completed {
+  margin-top: 16px;
+  padding-left: 6px;
+}
+
+.memo-link {
+  color: #404041;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-right: 40px;
+  color: #e31565;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.question-image {
+  max-width: 80%;
+  margin: 12px 0px;
+}
+
+.parent-expansion-panel {
+  box-shadow: none !important;
+  background-color: #F5F4F4;
+}

@@ -1,0 +1,16 @@
+@import "../../../../assets/css/theme/app-theme.scss";
+
+h3 {
+    font-weight: 400;
+}
+
+button {
+    height: 50px;
+    font-size: 16px;
+    margin: 16px 0;
+    color: mat-color($custom, white1) !important;
+}
+
+.center {
+    margin: 0 auto;
+}

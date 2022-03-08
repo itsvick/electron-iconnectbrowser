@@ -1,0 +1,35 @@
+{
+  "name": "Grade 9 Summary of Posting",
+  "completionTime": 180,
+  "pdfUrl": "https://papervideo-assets.s3-eu-west-1.amazonaws.com/Grade_9_Summary_of_Posting.pdf",
+  "videoUrl": "https://papervideo-assets.s3-eu-west-1.amazonaws.com/Grade+9+Summary+of+Posting.mp4",
+  "jingleUrl": "https://papervideo-assets.s3-eu-west-1.amazonaws.com/Paper_R_v6_smaller.mp4",
+  "video": {
+    "videoBookmarks": [
+      {
+        "videoBookmarkName": "Rules for posting",
+        "time": "00:02:28"
+      },
+      {
+        "videoBookmarkName": "Worked Example",
+        "time": "00:08:43"
+      },
+      {
+        "videoBookmarkName": "Worked Example: Cash Receipts Journal",
+        "time": "00:17:18"
+      },
+      {
+        "videoBookmarkName": "Worked Example: Cash Payments journal",
+        "time": "00:28:12"
+      },
+      {
+        "videoBookmarkName": "Worked Example: Creditors Journal & Creditors Allowances Journal",
+        "time": "00:35:17"
+      },
+      {
+        "videoBookmarkName": "Worked Example: Debtors Journal & Debtors Allowances Journal",
+        "time": "00:44:43"
+      }
+    ]
+  }
+}

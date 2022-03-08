@@ -1,0 +1,9 @@
+<div fxFlexFill class="container" fxLayoutAlign="center center">
+    <mat-card fxFlex="340px" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px">
+        <img class="small-brand" src="assets/images/Vector Smart Object.png">
+        <h1 class="mat-display-3">Welcome</h1>
+        <app-loader-button fxFlex [label]="'Login'" [defaultSize]="false" (clicked)="loginRedirect()" [$disabled]="$disabled"></app-loader-button>
+        <!-- <app-loader-button fxFlex [label]="'Register'" [color]="'accent'" [defaultSize]="false"></app-loader-button> -->
+        <app-loader-button fxFlex [label]="'Use Offline'" [color]="'white'" [defaultSize]="false" (clicked)="loginOffline()"></app-loader-button>
+    </mat-card>
+</div>

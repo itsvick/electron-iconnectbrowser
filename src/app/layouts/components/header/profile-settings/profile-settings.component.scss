@@ -1,0 +1,145 @@
+$headerSpacing: 20px;
+$inputSpacing: 15px;
+
+.profile-settings {
+  &_header {
+    position: relative;
+    background-color: #f04e30;
+    height: calc(194px - (#{$headerSpacing} * 2));
+    width: calc(100% - (#{$headerSpacing} * 2));
+    padding: 20px;
+
+    &-top {
+      display: flex;
+
+      h2 {
+        color: white;
+      }
+    }
+
+    &-bottom {
+      display: flex;
+    }
+  }
+
+  &_picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+
+  &_links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+
+    a {
+      color: white;
+      font-size: 15px;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &_widget {
+    text-align: center;
+
+    &:nth-child(2) {
+      position: relative;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        top: 20%;
+        width: 1px;
+        height: 24px;
+        background-color: #ededed;
+      }
+
+      &:before {
+        left: -50%;
+      }
+
+      &:after {
+        right: -50%;
+      }
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 20px;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 534px;
+        height: 1px;
+        background-color: #ededed;
+        bottom: 0;
+      }
+    }
+
+    p {
+      font-size: 11px;
+      line-height: 13px;
+      color: #a5a5a5;
+      margin-bottom: 0;
+
+      &.widget-title {
+        font-size: 22px;
+        line-height: 22px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  &_form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+
+    &-input {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+
+      label {
+        color: #adadad;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: calc(283px - (#{$inputSpacing} * 2));
+        height: calc(43px - (#{$inputSpacing} * 2));
+        border: 1px solid #e6e6e6;
+        padding: $inputSpacing;
+      }
+    }
+
+    &-actions {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

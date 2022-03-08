@@ -1,0 +1,13 @@
+<div class="filter-selection">
+  <div class="selector-box" [ngClass]="dropdownIsOpen ? 'open' : null" (click)="toggleItems()">
+    {{ menu.title }}
+    <mat-icon>expand_more</mat-icon>
+  </div>
+  <div class="drop-down" [ngClass]="dropdownIsOpen ? 'open' : null">
+    <ng-container *ngFor="let option of menu.options">
+      <div class="option">
+        <mat-checkbox class="filter-checkbox" [value]="option.value">{{ option.name }}</mat-checkbox>
+      </div>
+    </ng-container>
+  </div>
+</div>

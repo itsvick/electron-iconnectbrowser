@@ -1,0 +1,8 @@
+<div class="header">
+  <ng-content select=".header-section"></ng-content>
+</div>
+<ng-container *ngIf="!customContent">
+  <div class="main-content">
+    <ng-content select=".main-content"></ng-content>
+  </div>
+</ng-container>

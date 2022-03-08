@@ -1,0 +1,13 @@
+@import "mixins/app-mixin-template";
+@import "mixins/app-mat-mixin.scss";
+@import "mixins/app-mixin-inputs.scss";
+@import "mixins/app-color-repeat-mixin";
+@import "mixins/app-general-mixin.scss";
+
+@mixin mixins-index($theme) {
+  @include app-mixin-template($theme);
+  @include app-mixin-inputs($theme);
+  @include app-mat-mixin($theme);
+  @include app-color-repeat-mixin($theme);
+  @include app-general-mixin($theme);
+}

@@ -1,0 +1,84 @@
+$fontcolors: #20bec6, #e31565, #f89d3e, #57bc72, #421e6c, #f04e30;
+$backcolors: rgba(32, 190, 198, 0.25), rgba(227, 21, 101, 0.25), rgba(248, 157, 62, 0.25), rgba(87, 188, 114, 0.25),
+  rgba(66, 30, 108, 0.25), rgba(240, 78, 48, 0.25);
+
+@mixin app-subject-card-color-mixin($theme) {
+  $accent: map-get($theme, accent);
+//   $fontcolors: #20bec6, #e31565, #f89d3e, #57bc72, #421e6c, #f04e30;
+//   $backcolors: rgba(32, 190, 198, 0.25), rgba(227, 21, 101, 0.25), rgba(248, 157, 62, 0.25), rgba(87, 188, 114, 0.25),
+//     rgba(66, 30, 108, 0.25), rgba(240, 78, 48, 0.25);
+
+  @for $i from 1 through length($fontcolors) {
+    app-subject-card:nth-child(#{length($fontcolors)}n + #{$i}) {
+      mat-card {
+        h3.subject {
+          color: nth($fontcolors, $i);
+        }
+        .light-back {
+          color: nth($fontcolors, $i);
+          background-color: nth($backcolors, $i);
+        }
+
+        button.upgrade,
+        button.exam {
+          background-color: nth($fontcolors, $i);
+          color: white;
+        }
+
+        button.lesson {
+          border: 2px solid nth($fontcolors, $i);
+          background: white;
+          color: nth($fontcolors, $i);
+        }
+      }
+    }
+  }
+}
+
+@mixin app-product-card-color-mixin($theme) {
+  $accent: map-get($theme, accent);
+  @for $i from 1 through length($fontcolors) {
+    app-product-card:nth-child(#{length($fontcolors)}n + #{$i}) {
+      mat-card {
+        h3 {
+          color: nth($fontcolors, $i);
+        }
+
+        button {
+          background-color: nth($fontcolors, $i);
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@mixin app-progress-card-color-mixin($theme) {
+  $accent: map-get($theme, accent);
+  @for $i from 1 through length($fontcolors) {
+    app-progress-card:nth-child(#{length($fontcolors)}n + #{$i}) {
+      mat-card {
+        h1 {
+          color: nth($fontcolors, $i);
+          margin: 0px;
+          font-size: 45px;
+          line-height: 45px;
+        }
+        
+        div.progress-title {
+          font-size: 14px;
+          line-height: 15px;
+          color: #404041;
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@mixin app-color-repeat-mixin($theme) {
+  @include app-subject-card-color-mixin($theme);
+  @include app-product-card-color-mixin($theme);
+  @include app-progress-card-color-mixin($theme);
+}

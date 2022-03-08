@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+  <img [src]='data.imagePath' (error)='noImage()' *ngIf="isValidImage">
+  <h1 *ngIf="!isValidImage">No image available</h1>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

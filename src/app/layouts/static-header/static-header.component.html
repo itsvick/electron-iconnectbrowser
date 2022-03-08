@@ -1,0 +1,42 @@
+<!-- <div class="corner-ribbon top-left sticky red shadow">Beta</div> -->
+<mat-toolbar class="static-toolbar" fxFlex>
+  <div class="static-company-container" fxLayout="row">
+    <a href="/">
+      <img class="brand" src="assets/images/logo-with-brand.png">
+    </a>
+  </div>
+  <span class="static-spacer"></span>
+
+
+  <div class="static-button-container">
+    <!-- <button mat-button class="static-menu-button">
+      How it Works <mat-icon>expand_more</mat-icon>
+    </button>
+
+    <button mat-button class="static-menu-button">
+      Subjects <mat-icon>expand_more</mat-icon>
+    </button>
+
+    <button mat-button class="static-menu-button">
+      About Us <mat-icon>expand_more</mat-icon>
+    </button> -->
+
+    <!-- [ngClass]="{'dark-font': !isLandingPage}" -->
+    <button mat-button class="static-menu-button dark-font"  [routerLink]="['/auth/login']">
+      Login
+    </button>
+
+    <button mat-button class="b-yellow-sea2" [routerLink]="['/auth/register']">
+      Sign Up
+    </button>
+  </div>
+
+  <!-- <mat-menu #messageMenu="matMenu">
+    <label mat-menu-item>
+      Test
+    </label>
+
+  </mat-menu> -->
+
+</mat-toolbar>
+

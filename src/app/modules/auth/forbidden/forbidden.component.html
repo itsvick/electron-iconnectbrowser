@@ -1,0 +1,7 @@
+<div class="card-403">
+    <mat-icon class="error-icon">error_outline</mat-icon>
+    <h1>403 Forbidden</h1>
+    <h2>You do not have access to the requested resource</h2>
+    <button *ngIf="isLoggedIn" mat-flat-button color="primary" [routerLink]="['/dashboard']">Go to Dashboard</button>
+    <button *ngIf="!isLoggedIn" mat-flat-button color="primary" [routerLink]="['/login']">Login</button>
+</div>

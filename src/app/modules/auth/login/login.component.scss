@@ -1,0 +1,17 @@
+// @import "../../../../assets/css/theme/app-theme.scss";
+
+.brand-header {
+  margin-bottom: 34px;
+  margin-top: 20px;
+}
+
+.register-hint {
+  font-size: 18px;
+  text-align: left;
+}
+
+.control {
+  mat-error {
+    margin: 5px 0px 12px 0px;
+  }
+}

@@ -1,0 +1,25 @@
+<div class="video-layout">
+  <div class="video-layout_main">
+    <div class="video-container">
+      <video width="600" height="280" controls>
+        <ng-content select="source"></ng-content>
+      </video>
+      <div class="video-buttons">
+        <button [ngClass]="theme">
+          <mat-icon>chevron_left</mat-icon>
+          Previous question
+        </button>
+        <button [ngClass]="theme">
+          <mat-icon>chevron_right</mat-icon>
+          Next question
+        </button>
+      </div>
+    </div>
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="video-layout_sidebar">
+    <ng-content select=".video-sidebar-content"></ng-content>
+  </div>
+</div>

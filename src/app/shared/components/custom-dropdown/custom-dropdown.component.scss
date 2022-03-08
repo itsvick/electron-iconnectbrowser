@@ -1,0 +1,132 @@
+@import "../../../../assets/css/theme/app-theme.scss";
+
+.box {
+  height: 50px;
+  max-height: 50px;
+  background-color: white;
+}
+
+.outline {
+  border-left: 1px solid #D8D8D8;
+  border-right: 1px solid #D8D8D8;
+  border-top: 1px solid #D8D8D8;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #D8D8D8;
+}
+
+.icon {
+  cursor: default;
+  width: 50px;
+  height: 50px;
+  color: white;
+  mat-icon {
+    cursor: default;
+    margin: 13px 0px 0px 13px;
+    height: 25px;
+    width: 25px;
+    font-size: 25px;
+  }
+}
+
+.chev {
+  width: 50px;
+  height: 50px;
+  mat-icon {
+    margin: 9px 0px 0px 9px;
+    height: 25px;
+    width: 25px;
+    font-size: 33px;
+  }
+}
+
+.chev.open {
+  transform: rotate(180deg);
+}
+
+.can-open {
+  cursor: pointer;
+}
+
+.can-be-selected {
+  cursor: pointer;
+}
+
+.selection {
+  margin-top: 12px;
+  padding: 8px;
+  box-shadow: 0px 2px 10px mat-color($custom, op-san-felix2);
+}
+
+.selection-item {
+  height: 40px;
+  border-bottom: 1px solid mat-color($custom, white-smoke1);
+  color: white;
+}
+
+.item-not-selected {
+  background-color: transparent !important;
+  color: mat-color($custom, paynes-grey1) !important;
+}
+
+.orange-full {
+  background-color: mat-color($custom, yellow-sea1);
+}
+
+.orange-light {
+  background-color: mat-color($custom, seashell1);
+  color: mat-color($custom, yellow-sea1);
+}
+
+.green-full {
+  background-color: mat-color($custom, emrald1);
+}
+
+.green-light {
+  background-color: mat-color($custom, bubbles1);
+  color: mat-color($custom, emrald1);
+}
+
+.blue-full {
+  background-color: mat-color($custom, iris-blue1);
+}
+
+.blue-light {
+  background-color: mat-color($custom, light-cyan);
+  color: mat-color($custom, iris-blue1);
+}
+
+.primary-full {
+  background-color: mat-color($primary);
+}
+
+.primary-light {
+  background-color: mat-color($primary, 0.1);
+  color: mat-color($primary);
+}
+
+.accent-full {
+  background-color: mat-color($accent);
+}
+
+.accent-light {
+  background-color: mat-color($accent, 0.1);
+  color: mat-color($accent);
+}
+
+.value {
+  font-size: 20px;
+  text-align: left;
+  color: mat-color($custom, paynes-grey1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.over {
+  position: absolute;
+  width: 284px;
+  margin-top: 60px;
+  z-index: 3;
+}

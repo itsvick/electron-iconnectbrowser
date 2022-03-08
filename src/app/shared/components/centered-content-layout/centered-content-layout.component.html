@@ -1,0 +1,11 @@
+<div class="search-results">
+  <ng-container *ngFor="let item of pageItems">
+    <div class="search-item">
+      <div class="search-item_content">
+        <p>{{ item.title }}</p>
+        <p>{{ item.description }}</p>
+      </div>
+      <mat-icon (click)="navigateSomewhere(item.id)">chevron_right</mat-icon>
+    </div>
+  </ng-container>
+</div>

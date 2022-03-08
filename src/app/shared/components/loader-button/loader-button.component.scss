@@ -1,0 +1,44 @@
+@import "../../../../assets/css/theme/app-theme.scss";
+
+$darkFont: mat-color($custom, paynes-grey1);
+.dark-font {
+    color: $darkFont !important;
+}
+
+.light-font {
+    color: white !important;
+}
+
+.default {
+    width: 220px;
+}
+
+button {
+    height: 45px;
+    color: white !important;
+    width: 100%;
+}
+
+.white-button {
+    @extend .dark-font;
+    background-color: white;
+    border: 1px solid $darkFont;
+}
+
+.aqua-button {
+    @extend .light-font;
+    background-color: #20bec6;
+    border: 1px solid #20bec6;
+}
+
+.orange-button {
+    @extend .light-font;
+    background-color: #f89d3e;
+    border: 1px solid #f89d3e;
+}
+
+.dark-orange-button {
+    @extend .light-font;
+    background-color: #F04E30;
+    border: 1px solid #F04E30;
+}

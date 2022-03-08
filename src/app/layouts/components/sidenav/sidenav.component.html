@@ -1,0 +1,35 @@
+<div class="side-panel">
+  <div class="image-container">
+    <img src="./assets/images/White-Colour-Papervideo-logo@2x.png" />
+  </div>
+
+  <div class="nav">
+    <ng-container *ngFor="let item of navItems">
+      <a class="nav-item" *ngIf="(isOfflineMode && !item.disableOffline) || (!isOfflineMode && (!disabled || (disabled && !item.disableOffline)))" [ngClass]="currentUrl && currentUrl.includes(item.path) ? 'active' : null" [routerLink]="[item.path]">
+        <mat-icon color="white">{{ item.icon }}</mat-icon>
+        <span>{{ item.title }}</span>
+      </a>
+      <a class="nav-item offline-disabled" 
+      matTooltip="This cannot be accessed while offline / offline-mode."
+      *ngIf="(isOfflineMode && item.disableOffline) || (disabled && item.disableOffline)" 
+      [ngClass]="currentUrl && currentUrl.includes(item.path) ? 'active' : null">
+        <mat-icon color="grey">{{ item.icon }}</mat-icon>
+        <span color="grey">{{ item.title }}</span>
+      </a>
+    </ng-container>
+  </div>
+
+  <div class="sign-out">
+    <!-- using a random icon, as couldn't find one the matched in design -->
+    <a *ngIf="!isOfflineMode && isOnline" class="nav-item" [routerLink]="['']">
+      <mat-icon color="white">trending_flat</mat-icon>
+      <span >Sign Out</span>
+    </a>
+
+    <a *ngIf="isOfflineMode" class="nav-item" [routerLink]="['/login']">
+      <mat-icon color="white">trending_flat</mat-icon>
+      <span >Sign In</span>
+    </a>
+  </div>
+
+</div>

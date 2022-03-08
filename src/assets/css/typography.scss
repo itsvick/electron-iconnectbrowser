@@ -1,0 +1,54 @@
+
+/*default version*/
+@font-face {
+  font-family: "proxima-nova";
+  // src: url('/src/assets/fonts/Proxima_Nova_Regular.otf') format('opentype');
+  src: url("./../fonts/Proxima_Nova_Regular.otf") format("opentype");
+  // src: url("assets/fonts/Proxima_Nova_Regular.otf") format("opentype");
+
+}
+/*bold version*/
+@font-face {
+  font-family: "proxima-nova-bold";
+  src: local("Proxima Nova"), url("./../fonts/Proxima_Nova_Bold.otf") format("opentype");
+  // src: local("Proxima Nova"), url("assets/fonts/Proxima_Nova_Bold.otf") format("opentype");
+  font-weight: bold;
+}
+/*light version*/
+@font-face {
+  font-family: "proxima-nova-light";
+  src: local("Proxima Nova"), url("./../fonts/Proxima_Nova_Light.otf") format("opentype");
+  // src: local("Proxima Nova"), url("assets/fonts/Proxima_Nova_Light.otf") format("opentype");
+  font-weight: lighter;
+}
+$typography: mat-typography-config(
+  $font-family: "proxima-nova",
+  $display-4: mat-typography-level(45px, 45px, 600, "proxima-nova-bold"), 
+  $display-3: mat-typography-level(30px, 36px, 600, "proxima-nova-bold"),
+  $display-2: mat-typography-level(24px, 24px, 500, "proxima-nova-bold"),
+  $display-1: mat-typography-level(20px, 24px, 500, "proxima-nova-bold"),
+  $headline: mat-typography-level(22px, 22px, 500, "proxima-nova-bold"),
+  $title: mat-typography-level(20px, 20px, 500, 'proxima-nova-bold'),
+  $subheading-1: mat-typography-level(18px, 18px, 500, 'proxima-nova'),
+  $subheading-2: mat-typography-level(14px, 26px, 500, 'proxima-nova'),
+  $body-1: mat-typography-level(20px, 24px, 500, 'proxima-nova'),
+  $body-2: mat-typography-level(18px, 18px, 500, 'proxima-nova'),
+  $caption: mat-typography-level(14px, 18px, 500, 'proxima-nova'),
+  $button: mat-typography-level(16px, 16px, 500, 'proxima-nova'),
+  $input: mat-typography-level(12px, 1.125, 500, 'proxima-nova'),
+);
+
+// https://material.angular.io/guide/typography
+// $display-4: class="mat-display-4"
+// $display-3: class="mat-display-3"
+// $display-2: class="mat-display-2"
+// $display-1: class="mat-display-1"
+// $headline: <h1>
+// $title: <h2>
+// $subheading-1: <h3>
+// $subheading-2: <h4>
+// $body-1: <div>
+// $body-2: class=".mat-body-strong"
+// $caption: class="mat-small"
+// $button: <button>
+// $input: <input>

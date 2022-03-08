@@ -1,0 +1,20 @@
+<div mat-dialog-title>
+    <h2>Offline Mode</h2>
+</div>
+
+<div mat-dialog-content>
+  <p>It seems your internet has gone offline.</p>
+
+  <p>If you have a SD card connected, you can continue via the resources tab.</p>
+
+  <p style="margin-bottom: 35px;">As soon as connectivity is restored you will have access to subjects and profile tabs.</p>
+
+  <app-loader-button 
+  style="max-width: 300px; margin: 0 auto;"
+  [label]="'Continue Offline'"
+  [defaultSize]="false"
+  (clicked)="continue()">
+  </app-loader-button>
+</div>
+
+

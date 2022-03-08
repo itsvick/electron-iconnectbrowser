@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-landing-page',
+  templateUrl: './landing-page.component.html',
+  styleUrls: ['./landing-page.component.scss'],
+})
+export class LandingPageComponent  {
+  constructor(
+    // private authService: AuthService,
+  ) {
+    // this.authService.revokeToken(false);
+  }
+
+  get isMobile() {
+    return false;
+  }
+
+  feedbackPrev() {}
+
+  feedbackNext() {}
+
+}

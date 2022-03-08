@@ -1,0 +1,67 @@
+.profile-header {
+    height: 200px;
+    background-color: #f04e30;
+    padding: 16px 30px;
+    width: 100%;
+    .right-intersect{
+        background-image: url(../../../../assets/images/profile-intersection-right.png);
+        position: absolute;
+        height: 130px;
+        width: 80px;
+        background-position: top left;
+        background-repeat: no-repeat;
+        margin-top: 54px;
+        margin-left: calc(100% - 110px);
+        opacity: 0.4;
+    }
+    .left-intersect{
+        position: absolute;
+        height: 100px;
+        width: 135px;
+        background-position: top left;
+        background-repeat: no-repeat;
+        margin-top: -16px;
+        margin-left: -30px;
+        opacity: 0.4;
+        background-image: url(../../../../assets/images/profile-intersection-left.png);
+    }
+    > h1 {
+        color: white;
+        font-size: 28px;
+        line-height: 28px;
+    }
+    > .image-wrapper {
+        margin: auto 0;
+        > .image-container {
+            width: 100px;
+            height: 100px;
+        }
+        > .image-actions {
+            margin: auto 0;
+            > * {
+                color: white;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.profile-stats {
+    height: 85px;
+}
+
+.profile-body {
+    padding: 20px 50px;
+}
+
+.profile-actions {
+    padding: 20px 50px;
+    max-width: 655px;
+}
+
+.control-section-spacing {
+    margin-top: 24px;
+    &.small {
+        margin-top: 12px;
+    }
+}

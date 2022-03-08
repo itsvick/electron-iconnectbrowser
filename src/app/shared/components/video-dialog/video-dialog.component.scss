@@ -1,0 +1,24 @@
+.video-card {
+    width: 900px;
+    min-height: 500px;
+    position: relative;
+  
+    .close {
+      position: absolute;
+      top: 14px;
+      right: 22px;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  }
+  
+  .video {
+    background: #485c72 0% 0% no-repeat padding-box;
+    outline: 0;
+  }
+
+  .center-error {
+    margin: 25% auto;
+  }

@@ -1,0 +1,15 @@
+.about {
+  &_header {
+    h2 {
+      font-size: 28px;
+      color: #404041;
+    }
+  }
+
+  &_content {
+    p {
+      color: #404041;
+      font-size: 15px;
+    }
+  }
+}

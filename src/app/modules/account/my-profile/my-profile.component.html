@@ -1,0 +1,97 @@
+<div class="loader-container" fxLayout="column" fxLayoutAlign="center center" *ngIf="isLoading">
+    <mat-spinner fxLayout="column" fxLayoutAlign="space-evenly center" color="accent" diameter="24"
+        style="margin: 0 auto;"></mat-spinner>
+</div>
+
+<div *ngIf="showContent">
+    <div class="profile-header" fxFlex fxLayout="column">
+        <div class="left-intersect"></div>
+        <div class="right-intersect"></div>
+        <h1>My profile settings</h1>
+        <div class="image-wrapper" fxLayout fxLayoutGap="20px">
+            <div class="image-container">
+                <div fxFlex style="border-radius: 50px;
+            background: grey;
+            border: 1px solid #454545;"></div>
+            </div>
+            <div class="image-actions" fxFlex fxLayout="column" fxLayoutGap="12px">
+                <h4>Change profile picture</h4>
+                <h4>Remove picture</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="profile-container" fxLayout="column" fxLayoutAlign="start center" *ngIf="showContent">
+
+    <app-my-profile-stats fxFlexFill></app-my-profile-stats>
+
+    <div class="profile-body" fxFlex fxLayout="column" fxLayoutGap="12px">
+        <form name="studentForm" [formGroup]="profileForm" fxLayout="column" fxLayoutAlign="start start"
+            fxLayoutAlign.lt-sm="start center" fxLayoutGap="16px" style="width: 100%;">
+            <div fxFlexFill fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                <app-input-styled class="control" [formControl]="profileForm.get('firstName')" [title]="'First Name'"
+                    [placeholder]="'Enter your first name'">
+                </app-input-styled>
+
+                <app-input-styled class="control" [formControl]="profileForm.get('lastName')" [title]="'Last Name'"
+                    [placeholder]="'Enter your last name'">
+                </app-input-styled>
+            </div>
+
+            <div fxFlexFill fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+                <app-input-styled class="control" [formControl]="profileForm.get('email')" [title]="'Email Address'"
+                    [placeholder]="'Enter your email address'">
+                </app-input-styled>
+
+                <app-input-styled class="control" [formControl]="profileForm.get('phoneNumber')"
+                    [title]="'Phone Number'" [placeholder]="'Enter your phone number'">
+                </app-input-styled>
+            </div>
+
+            <div fxFlexFill fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="margin-top: 24px;"
+                *ngIf="shouldHaveSchool">
+                <app-input-styled-dropdown class="control" fxFlex [formControl]="profileForm.get('school')"
+                    [type]="'search'" [placeholder]="'Enter your school'" [required]="true" [title]="'School'"
+                    [displayMainKey]="'name'" (searchPhraseChanged)="searchSchools($event)"
+                    (valueSelected)="searchSchools($event.name, profileForm)" [items]="getSchools()"
+                    [autocompleteWidth]="546">
+                </app-input-styled-dropdown>
+            </div>
+
+            <div fxFlexFill fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px" style="margin-top: 24px;"
+                *ngIf="shouldHaveSchool">
+                <app-input-styled-dropdown class="control" fxFlex [formControl]="profileForm.get('grade')"
+                    [type]="'select'" [placeholder]="'Enter your grade'" [required]="false" [title]="'Grade'"
+                    [displayMainKey]="'name'" (valueSelected)="searchGrades(profileForm)" [items]="getGrades()"
+                    [disabled]="!profileForm.get('school').value" [reset]="$resetGrade" [autocompleteWidth]="262">
+                </app-input-styled-dropdown>
+
+                <app-input-styled-dropdown class="control" fxFlex [formControl]="profileForm.get('class')"
+                    [type]="'select'" [placeholder]="'Enter your class'" [required]="false" [title]="'Class'"
+                    [displayMainKey]="'name'" [items]="getClasses()" [disabled]="!profileForm.get('grade').value"
+                    [reset]="$resetClass" [autocompleteWidth]="262">
+                </app-input-styled-dropdown>
+            </div>
+
+            <div fxFlexFill fxLayout="row" fxLayoutGap="20px" class="control-section-spacing small">
+                <mat-checkbox class="control" fxFlex (change)="onDataShareChange($event)"
+                    [formControl]="profileForm.get('dataShare')">
+                    Allow my data to be shared on the school dashboard
+                </mat-checkbox>
+            </div>
+        </form>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="center center" class="control-section-spacing">
+            <app-loader-button [color]="'dark-orange'" [label]="'Save Changes'" [defaultSize]="true"
+                (clicked)="update()">
+            </app-loader-button>
+        </div>
+
+
+        <!-- This element is to ensure the dropdowns at the bottom have enough space -->
+        <div style="height: 100px;">
+
+        </div>
+    </div>
+</div>

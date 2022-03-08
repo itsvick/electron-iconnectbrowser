@@ -1,0 +1,211 @@
+@mixin app-custom-input($theme) {
+  input:focus {
+    outline: none;
+  }
+
+  app-input-styled,
+  app-input-styled-contact {
+    // width: 100%;
+    input {
+      border: 1px solid #bcbcbc;
+      margin-top: 5px;
+      height: 43px;
+      padding-left: 15px;
+      font-size: 20px;
+      outline: none !important;
+      //   border-right: none;
+    }
+
+    input:focus {
+      border: 2px solid mat-color($primary);
+      height: 41px;
+      //   border-right: none;
+    }
+
+    .label {
+      font-size: 15px;
+      letter-spacing: 0.25px;
+    }
+
+    .label-spacer {
+      min-height: 18px;
+    }
+
+    .control {
+      width: 100%;
+      mat-error {
+        font: 500 16px/24px "proxima-nova";
+      }
+      mat-error,
+      .valid {
+        margin: 6px 0px 0px 0px;
+      }
+    }
+  }
+
+  app-input-styled-contact {
+    .differ-reg {
+      border: 1px solid #bcbcbc;
+      margin-top: 29px;
+      height: 47px;
+      outline: none !important;
+      padding-left: 20px;
+      padding-top: 12px;
+      border-left: none;
+      background-color: white;
+    }
+
+    .differ-reg-icon {
+      position: absolute;
+      background-color: white;
+      color: mat-color($accent) !important;
+      margin-left: 295px;
+      margin-top: 40px;
+    }
+
+    app-input-styled:focus-within ~ .differ-reg {
+      border: 2px solid mat-color($primary);
+      border-left: none;
+      height: 47px;
+    }
+  }
+
+  app-input-styled-dropdown {
+    .box {
+      height: 47px !important;
+      background-color: white;
+      text-align: left;
+      color: -internal-light-dark-color(black, white);
+    }
+
+    // .box.focus {
+    //   height: 49px !important;
+    // }
+
+    input,
+    .box {
+      border: 1px solid #bcbcbc;
+      margin-top: 5px;
+      height: 43px;
+      padding-left: 15px;
+      font-size: 20px;
+      outline: none !important;
+      border-right: none;
+    }
+
+    input:focus,
+    .box.focus {
+      border: 2px solid mat-color($primary);
+      height: 41px;
+      border-right: none;
+      .chev {
+        border: 2px solid mat-color($primary);
+        border-left: none;
+      }
+    }
+
+    input.full-border {
+      border: 1px solid #bcbcbc;
+      margin-top: 5px;
+      height: 43px;
+      padding-left: 15px;
+      font-size: 20px;
+      outline: none !important;
+    }
+
+    input.full-border:focus {
+      border: 2px solid mat-color($primary);
+      height: 41px;
+    }
+
+    input:focus + .chev,
+    .box.focus + .chev {
+      border: 2px solid mat-color($primary);
+      border-left: none;
+      height: 47px;
+    }
+
+    .label {
+      font-size: 15px;
+      letter-spacing: 0.25px;
+    }
+
+    .label-spacer {
+      min-height: 18px;
+    }
+
+    .control {
+      width: 100%;
+      mat-error {
+        font: 500 16px/24px 'proxima-nova';
+      }
+      mat-error,
+      .valid {
+        margin: 6px 0px 0px 0px;
+      }
+    }
+
+    .chev {
+      max-width: 50px;
+      min-width: 30px;
+      height: 47px;
+      margin-top: auto;
+      background: white;
+      border: 1px solid #bcbcbc;
+      border-left: none;
+      mat-icon {
+        height: 30px;
+        width: 30px;
+        font-size: 30px;
+        margin-left: 4px;
+        margin-top: 8px;
+      }
+    }
+
+    .selection {
+      min-width: 262px !important;
+    }
+
+    div.selection {
+      position: absolute !important;
+      margin-top: 70px;
+      z-index: 999;
+      max-height: 256px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      mat-option {
+        min-height: 46px !important;
+      }
+    }
+
+    .placeholder-font {
+      color: #757575;
+    }
+  }
+
+  .link {
+    cursor: pointer;
+  }
+}
+
+@mixin app-custom-scrollbar($theme) {
+  $background: map-get($theme, background);
+  * {
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+      background-color: mat-color($background, disabled-button);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: mat-color($primary);
+    }
+  }
+}
+
+// The mixin below serves as an "export" for all the mixins declared above in this file.
+// Include all mixins declared above in this file here, then there is only 1 mixin to be imported into mixins-index instead of a couple.
+@mixin app-mixin-inputs($theme) {
+  @include app-custom-input($theme);
+  @include app-custom-scrollbar($theme);
+}

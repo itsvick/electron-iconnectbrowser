@@ -1,0 +1,58 @@
+<div class="profile-settings">
+  <div class="profile-settings_header">
+    <div class="profile-settings_header-top">
+      <mat-icon class="fixed-right" (click)="closeDialog()">close</mat-icon>
+      <h2>My profile settings</h2>
+    </div>
+
+    <div class="profile-settings_header-bottom">
+      <div class="profile-settings_picture">
+        <mat-icon color="white" (click)="changeProfilePic()">camera_alt</mat-icon>
+      </div>
+      <div class="profile-settings_links">
+        <a>Change profile picture</a>
+        <a>Remove picture</a>
+      </div>
+    </div>
+  </div>
+  <div class="profile-settings_content">
+    <div class="profile-settings_widget-container">
+      <ng-container *ngFor="let widget of widgets">
+        <div class="profile-settings_widget">
+          <p class="widget-title" [ngStyle]="{ color: widget.color }">
+            {{ widget.count }}
+          </p>
+          <p>
+            {{ widget.description }}
+          </p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="profile-settings_form">
+      <div class="profile-settings_form-input">
+        <label>Fullname</label>
+        <input matInput [value]="data.name" />
+      </div>
+
+      <div class="profile-settings_form-input">
+        <label>Email address</label>
+        <input matInput />
+      </div>
+
+      <div class="profile-settings_form-input">
+        <label>Your school</label>
+        <input matInput />
+      </div>
+
+      <div class="profile-settings_form-input">
+        <label>Your grade</label>
+        <input matInput />
+      </div>
+
+      <div class="profile-settings_form-actions">
+        <mat-slide-toggle>Download over wi-fi only</mat-slide-toggle>
+        <button mat-flat-button color="profile" (click)="saveProfile()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
