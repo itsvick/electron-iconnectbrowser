@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserViewComponent } from './browser-view/browser-view.component';
 import { SharedModule } from '@shared/shared.module';
@@ -13,5 +13,8 @@ const EXPORTED_DECLARATIONS = [BrowserViewComponent];
   imports: [STATIC_IMPORTS, BrowserRoutingModule],
   exports: EXPORTED_DECLARATIONS,
   declarations: EXPORTED_DECLARATIONS,
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class BrowserModule { }
