@@ -1,5 +1,5 @@
 import { BaseEntity } from './entity-base';
-import { UserType } from '.';
+// import { UserType } from '.';
 
 export interface ContactUs extends BaseEntity {
   name: string;
@@ -9,5 +9,5 @@ export interface ContactUs extends BaseEntity {
 
   userTypeId: number;
 
-  userType?: UserType;
+  // userType?: UserType;
 }

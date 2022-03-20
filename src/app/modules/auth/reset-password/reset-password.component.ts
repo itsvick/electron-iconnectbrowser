@@ -34,18 +34,6 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   updatePassword() {
-    this.authService.changePassword({
-      resetPasswordKey: this.token,
-      password: this.passwordControl.value,
-      confirmPassword: this.confirmPasswordControl.value,
-    }).subscribe(() => {
-      this.router.navigate(['/auth/login']);
-      // this.generalService.showToast(this.create ? 'Password Created' : 'Password updated');
-    }, () => {
-      // this.generalService.showToast(this.create ?
-      //   'Failed to create password, invalid or expired token' :
-      //   'Failed to update password, invalid or expired token');
-    });
   }
 
 }

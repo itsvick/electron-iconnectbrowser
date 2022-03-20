@@ -20,25 +20,6 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   fetchWidgetData() {
-    const tempArrayOfObjects = [
-      {
-        color: '#20BEC6',
-        count: '120',
-        description: 'Videos watched'
-      },
-      {
-        color: '#57BC72',
-        count: '03',
-        description: 'Papers completed'
-      },
-      {
-        color: '#F89D3E',
-        count: '247',
-        description: 'Questions done'
-      }
-    ];
-
-    this.widgets.push(...tempArrayOfObjects);
   }
 
   changeProfilePic() {

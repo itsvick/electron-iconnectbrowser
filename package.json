@@ -1,13 +1,13 @@
 {
-  "name": "papervideodesktop",
-  "title": "Paper Video Desktop",
-  "description": "Paper Video Desktop",
+  "name": "iconnectbrowser",
+  "title": "iConnect Browser Desktop",
+  "description": "iConnect Browser Desktop",
   "version": "1.0.0",
   "main": "main.js",
   "private": true,
   "author": {
-    "name": "PaperVideo Team",
-    "email": "test@gmail.com"
+    "name": "iConnect Team",
+    "email": "ali@icycle-global.com.com"
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",

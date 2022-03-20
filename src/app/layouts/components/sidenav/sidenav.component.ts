@@ -28,27 +28,10 @@ export class SidenavComponent extends AbstractBaseComponent implements OnInit {
     });
 
     this.navItems = [
-    //   {
-    //   icon: 'insert_drive_file',
-    //   title: 'My subjects',
-    //   path: '/subjects',
-    //   disableOffline: true
-    // },
-    // {
-    //   icon: 'crop_free',
-    //   title: 'Resources',
-    //   path: '/resources'
-    // },
     {
       icon: 'search',
       title: 'Browser',
       path: '/browser',
-      disableOffline: true
-    },
-    {
-      icon: 'person',
-      title: 'Account',
-      path: '/account',
       disableOffline: true
     },
     {

@@ -7,7 +7,7 @@ export const environment = {
   apiUrl: 'https://api.aixunhuan.com.cn/api/v1.0/',
   apiWebsocketUrl: 'http://localhost:3000',
   environment: 'local',
-  paymentUrl: 'https://test.oppwa.com/v1/',
+  paymentUrl: '',
   billingEnabled: false,
 };
 

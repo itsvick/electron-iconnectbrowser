@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.papervideo.co.za/',
+  apiUrl: 'https://api.aixunhuan.com.cn/api/v1.0/',
   apiWebsocketUrl: 'https://api.papervideo.co.za/',
   environment: 'Production',
-  paymentUrl: 'https://oppwa.com/v1/',
+  paymentUrl: '',
   billingEnabled: true,
 };

@@ -27,32 +27,8 @@ export class ApiInterceptor implements HttpInterceptor {
       req.url.startsWith('auth') ||
       req.url.startsWith('dev') ||
       req.url.toLowerCase().startsWith('users') ||
-      req.url.toLowerCase().startsWith('user-types') ||
-      req.url.toLowerCase().startsWith('roles') ||
-      req.url.toLowerCase().startsWith('schools') ||
-      req.url.toLowerCase().startsWith('how-hear') ||
-      req.url.toLowerCase().startsWith('sponsors') ||
-      req.url.toLowerCase().startsWith('questions') ||
-      req.url.toLowerCase().startsWith('payment') ||
-      req.url.toLowerCase().startsWith('subscriptions') ||
-      req.url.toLowerCase().startsWith('papers') ||
-      req.url.toLowerCase().startsWith('grades') ||
-      req.url.toLowerCase().startsWith('subjects') ||
-      req.url.toLowerCase().startsWith('countries') ||
-      req.url.toLowerCase().startsWith('curricula') ||
-      req.url.toLowerCase().startsWith('keywords') ||
-      req.url.toLowerCase().startsWith('papers') ||
-      req.url.toLowerCase().startsWith('lessons') ||
-      req.url.toLowerCase().startsWith('orders') ||
-      req.url.toLowerCase().startsWith('video-bookmarks') ||
-      req.url.toLowerCase().startsWith('videos') ||
-      req.url.toLowerCase().startsWith('package-options') ||
-      req.url.toLowerCase().startsWith('sections') ||
-      req.url.toLowerCase().startsWith('promotions') ||
-      req.url.toLowerCase().startsWith('contact-us') ||
-      req.url.toLowerCase().startsWith('media-coverages') ||
-      req.url.toLowerCase().startsWith('endorsements') ||
-      req.url.toLowerCase().startsWith('languages');
+      req.url.toLowerCase().startsWith('user-types');
+
     const cachedRoute = false;
     const token = null;
     if (token) {
@@ -64,7 +40,6 @@ export class ApiInterceptor implements HttpInterceptor {
         }
       });
     }
-
 
     // this has to done to change the correct routes so that the call goes to our api as the theme has its own calls to a fake db.
     if (realRoute) {  

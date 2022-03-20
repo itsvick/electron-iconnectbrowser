@@ -45,33 +45,13 @@ export const routes = [
         path: 'about',
         loadChildren: () => import('./modules/about/about.module').then((m) => m.AboutModule),
       },
-      {
-        path: 'account',
-        loadChildren: () => import('./modules/account/account.module').then((m) => m.AccountModule),
-      },
+      // {
+      //   path: 'account',
+      //   loadChildren: () => import('./modules/account/account.module').then((m) => m.AccountModule),
+      // },
       {
         path: 'faq',
         loadChildren: () => import('./modules/faq/faq.module').then((m) => m.FaqModule),
-      },
-      {
-        path: 'resources',
-        loadChildren: () => import('./modules/resources/resources.module').then((m) => m.ResourcesModule),
-      },
-      {
-        path: 'subjects',
-        loadChildren: () => import('./modules/subjects/subjects.module').then((m) => m.SubjectsModule),
-      },
-      {
-        path: 'papers',
-        loadChildren: () => import('./modules/papers/papers.module').then((m) => m.PapersModule),
-      },
-      {
-        path: 'videos',
-        loadChildren: () => import('./modules/video/video.module').then((m) => m.VideoModule),
-      },
-      {
-        path: 'lessons',
-        loadChildren: () => import('./modules/lessons/lessons.module').then((m) => m.LessonsModule),
       },
       {
         path: 'browser',

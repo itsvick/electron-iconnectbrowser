@@ -26,30 +26,6 @@ export class SidePanelLayoutComponent implements OnInit {
   viewingPaper = true;
 
   selectItems = [
-    {
-      viewValue: 'Content',
-      value: 'Content'
-    },
-    {
-      viewValue: 'Difficulty',
-      value: 'Difficulty'
-    },
-    {
-      viewValue: 'Questions',
-      value: 'Questions'
-    },
-    {
-      viewValue: 'abc',
-      value: 'abc'
-    },
-    {
-      viewValue: 'def',
-      value: 'def'
-    },
-    {
-      viewValue: 'ghi',
-      value: 'ghi'
-    }
   ];
 
   defaultValue1 = 'Content';
@@ -57,48 +33,11 @@ export class SidePanelLayoutComponent implements OnInit {
   defaultValue3 = 'Questions';
 
   contentSelection = {
-    title: 'Content',
-    options: [
-      {
-        value: '1',
-        name: 'Exam papers',
-      },
-      {
-        value: '2',
-        name: 'Lessons',
-      }
-    ]
+    title: 'Conet',
+    options: []
   };
-  difficultySelection = {
-    title: 'Difficulty',
-    options: [
-      {
-        value: '1',
-        name: 'Difficulty 1',
-      },
-      {
-        value: '2',
-        name: 'Difficulty 1',
-      },
-      {
-        value: '3',
-        name: 'Difficulty 3',
-      }
-    ]
-  };
-  questionsSelection = {
-    title: 'Questions',
-    options: [
-      {
-        value: '1',
-        name: 'Question 1',
-      },
-      {
-        value: '2',
-        name: 'Question 2',
-      }
-    ]
-  };
+  
+
 
   // simpleHeader = true;
   simpleHeader = false;
@@ -109,31 +48,7 @@ export class SidePanelLayoutComponent implements OnInit {
   ngOnInit() {
     // this.fakeSearchActived();
 
-    this.navItems = [{
-      icon: 'insert_drive_file',
-      title: 'My subjects',
-      path: ''
-    },
-    {
-      icon: 'crop_free',
-      title: 'Resources',
-      path: ''
-    },
-    {
-      icon: 'person',
-      title: 'Account',
-      path: ''
-    },
-    {
-      icon: 'info',
-      title: 'About Papervideo',
-      path: ''
-    },
-    {
-      icon: 'help',
-      title: 'FAQ',
-      path: ''
-    }];
+
 
     if (this.hasSearch && !this.simpleHeader) {
       this.constructPageData('search');
@@ -145,87 +60,6 @@ export class SidePanelLayoutComponent implements OnInit {
   }
 
   constructPageData(page) {
-    if (page === 'search') {
-      this.headerTitle = 'Search results for "' + this.searchPhrase + '"';
-      this.headerSubtitle = {
-        text: '7 Questions found',
-        status: 'pink'
-      };
-
-      this.searchItems = [
-        {
-          id: 0,
-          title: 'Question title',
-          description: 'lorem ipsum a whole lot of dummy data here bro how you like them apples?'
-        },
-        {
-          id: 1,
-          title: 'Question title',
-          description: 'lorem ipsum a whole lot of dummy data here bro how you like them apples?'
-        },
-        {
-          id: 2,
-          title: 'Question title',
-          description: 'lorem ipsum a whole lot of dummy data here bro how you like them apples?'
-        },
-        {
-          id: 3,
-          title: 'Question title',
-          description: 'lorem ipsum a whole lot of dummy data here bro how you like them apples?'
-        },
-        {
-          id: 4,
-          title: 'Question title',
-          description: 'lorem ipsum a whole lot of dummy data here bro how you like them apples?'
-        },
-        {
-          id: 5,
-          title: 'Question title',
-          description: 'lorem ipsum a whole lot of dummy data here bro how you like them apples?'
-        }
-      ];
-    }
-
-    if (page === 'paper') {
-      this.headerTitle = 'Paper 2';
-      this.headerSubtitle = {
-        text: 'Estimated time: 3 hours',
-        status: 'standard'
-      };
-
-      this.paperItems = [
-        {
-          id: 0,
-          title: 'Question title',
-          description: 'Exam paper 2'
-        },
-        {
-          id: 1,
-          title: 'Question title',
-          description: 'Exam paper 2'
-        },
-        {
-          id: 2,
-          title: 'Question title',
-          description: 'Exam paper 2'
-        },
-        {
-          id: 3,
-          title: 'Question title',
-          description: 'Exam paper 2'
-        },
-        {
-          id: 4,
-          title: 'Question title',
-          description: 'Exam paper 2'
-        },
-        {
-          id: 5,
-          title: 'Question title',
-          description: 'Exam paper 2'
-        }
-      ];
-    }
   }
 
   killSession() {
@@ -233,20 +67,10 @@ export class SidePanelLayoutComponent implements OnInit {
   }
 
   fakeSearchActived() {
-    this.hasSearch = true;
-    this.searchPhrase = 'Algebra';
-
-    if (this.searchPhrase.length > 0) {
-      this.populateSearchTags(this.searchPhrase);
-    }
   }
 
   populateSearchTags(searchPhrase) {
-    const listOfTags = ['Graphs', 'Equations'];
-
-    this.searchTags = listOfTags.map(newTag => {
-      return searchPhrase + ' ' + newTag;
-    });
+    return '';
   }
 
   removeTagFromSearch(tag) {
@@ -260,17 +84,5 @@ export class SidePanelLayoutComponent implements OnInit {
     }
   }
 
-  clearSearch() {
-    this.hasSearch = false;
-    this.searchPhrase = null;
-    this.searchItems = null;
-    this.viewingPaper = true;
-    this.constructPageData('paper');
-
-    this.headerTitle = 'My subjects';
-    this.headerSubtitle = {
-      text: 'Standard plan',
-      status: 'pink'
-    };
-  }
+  clearSearch() {}
 }

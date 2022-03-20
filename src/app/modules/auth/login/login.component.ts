@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractBaseComponent } from '@shared/abstracts/abstract-base-component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@api/services/auth.service';
-import { Router } from '@angular/router';
 import { IpcService } from '@app/services/ipc.service';
-import { View } from '@models/entities/view';
-import { QuestionService } from '@api/services/question.service';
 import { Subject } from 'rxjs';
 
 // import { shell } from 'electron';
@@ -31,8 +28,6 @@ export class LoginComponent extends AbstractBaseComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private ipcService: IpcService,
-    private questionService: QuestionService
-
   ) {
     super();
   }
@@ -75,10 +70,6 @@ export class LoginComponent extends AbstractBaseComponent implements OnInit {
         sessionStorage.setItem('isOfflineMode', 'false');
         this.authenticating = false;
         this.$loading.next(this.authenticating);
-
-        // this.uploadCachedViews();
-        console.log('Response :', response);
-        
         if(response.code !== '0000') {
           this.customError = response.message;
         }
@@ -96,23 +87,9 @@ export class LoginComponent extends AbstractBaseComponent implements OnInit {
   }
 
   uploadCachedViews() {
-    let offlineViews: [View] = JSON.parse(localStorage.getItem("offline-views"));
-    for (const view of offlineViews) {
-      this.questionService.getByCode(view.itemCode).subscribe(question => {
-        if(question.id) {
-          this.questionService.addVideoViews(view, question).subscribe(result => {
-            if(result.id) {
-              const index = offlineViews.map(view => view.itemCode).indexOf(view.itemCode);
-              offlineViews.splice(index, 1);
-              localStorage.setItem('offline-views', JSON.stringify(offlineViews));
-            }
-          })
-        }
-      })
-    }
+
   }
 
   openWebRegister() {
-    this.ipcService.openExternalLink('https://www.papervideo.co.za/auth/register');
   }
 }

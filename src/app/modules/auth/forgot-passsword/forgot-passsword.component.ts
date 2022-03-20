@@ -41,32 +41,6 @@ export class ForgotPasswordComponent extends AbstractBaseComponent implements On
     this.form.get('email').setValue((this.form.get('email').value || '').trim());
   }
 
-  reset() {
-    this.trimEmail();
-    this.authenticating = true;
-    this.submitted = true;
-
-    this.email = this.form.get('email').value;
-    this.phoneNumber = this.form.get('phoneNumber').value;
-
-    if (this.resetWithEmail) {
-      this.form.addControl('loginCred', this.form.get('email'));
-    } else {
-      this.form.addControl('loginCred', this.form.get('phoneNumber'));
-    }
-
-    this.authService.forgotPassword(this.form.value).subscribe({
-      next: (response) => {
-        if (!this.resetWithEmail) {
-          this.router.navigate(['auth', 'confirm-otp'], { queryParams: { reset: true, phoneNumber: response.phoneNumber } }).then()
-        } else {
-          this.authenticating = false;
-        }
-      },
-      error: (error) => {
-        this.authenticating = false;
-      }
-    });
-  }
+  reset() {}
 
 }

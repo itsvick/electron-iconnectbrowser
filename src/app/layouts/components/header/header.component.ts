@@ -99,10 +99,7 @@ export class HeaderComponent extends AbstractBaseComponent implements OnInit {
   simpleHeader: boolean;
 
   get myPaperIds(): number[] {
-    if (this.uiHelper && this.uiHelper.$myPapers && this.uiHelper.$myPapers.value) {
-      return this.uiHelper.$myPapers.value.map(p => p.paperId)
-    }
-
+  
     return null;
   }
 
@@ -112,11 +109,6 @@ export class HeaderComponent extends AbstractBaseComponent implements OnInit {
     private http: HttpClient
   ) {
     super(http)
-    if (this.authService.token) {
-      this.profileName = `${this.authService.token.firstName} ${this.authService.token.lastName}`;
-      // set prfile image if implemented
-      // profileImage = './../../../assets/images/Group-817@2x.png';
-    }
   }
 
   ngOnInit() {

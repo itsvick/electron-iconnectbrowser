@@ -1,7 +1,7 @@
 {
-  "appId": "co.papervideo.desktop",
-  "productName": "PaperVideo",
-  "copyright": "paper-video.pvt.LTD.",
+  "appId": "co.iconnect.desktop",
+  "productName": "iConnect",
+  "copyright": "iconnect",
   "directories": {
     "output": "release/"
   },

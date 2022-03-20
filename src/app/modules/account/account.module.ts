@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account-routing.module';
-import { MyProfileComponent } from './my-profile/my-profile.component';
 import { MyProfileStatsComponent } from './components/my-profile-stats/my-profile-stats.component';
-import { ProgressCardComponent } from './components/progress-card/progress-card.component';
 
 const STATIC_IMPORTS = [
   SharedModule,
@@ -12,10 +10,8 @@ const STATIC_IMPORTS = [
 ];
 
 const EXPORTED_DECLARATIONS = [
-  MyProfileComponent,
   MyProfileStatsComponent,
-  ProgressCardComponent
-];
+  ];
 
 @NgModule({
   imports: [

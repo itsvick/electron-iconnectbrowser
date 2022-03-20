@@ -13,15 +13,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { AboutModule } from './modules/about/about.module';
 import { AccountModule } from './modules/account/account.module';
 import { FaqModule } from './modules/faq/faq.module';
-import { ResourcesModule } from './modules/resources/resources.module';
-import { SubjectsModule } from './modules/subjects/subjects.module';
 import { GlobalService } from '@api/services/general.service';
-import { PapersModule } from './modules/papers/papers.module';
-import { LessonsModule } from './modules/lessons/lessons.module';
-import { VideoModule } from './modules/video/video.module';
-import { MathJaxModule } from './modules/math-jax/math-jax.module';
 import { ConnectionService } from './_session/lib/connection-service.service';
-import { ImageDialogComponent } from '@shared/components/image-dialog/image-dialog.component';
 import { DialogsModule } from './modules/_dialogs/dialogs.module';
 
 export function tokenGetter(): string {
@@ -46,11 +39,6 @@ export function tokenGetter(): string {
     AboutModule,
     AccountModule,
     FaqModule,
-    ResourcesModule,
-    SubjectsModule,
-    PapersModule,
-    LessonsModule,
-    VideoModule,
     DialogsModule
   ],
   providers: [
