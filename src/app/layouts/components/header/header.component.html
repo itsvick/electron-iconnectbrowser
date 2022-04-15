@@ -3,7 +3,6 @@
     <div class="main">
       <div class="main-header" [ngStyle]="{'margin-top':simpleHeader ? '15px' : '10px'}">
         <div class="search">
-          <app-keyword-search *ngIf="!simpleHeader && myPaperIds" [paperIds]="myPaperIds"></app-keyword-search>
         </div>
         <div class="user">
           <mat-icon *ngIf="!isOfflineMode && isOnline" matTooltip="It seems you have an internet connection." style="margin-right: 20px;">wifi</mat-icon>

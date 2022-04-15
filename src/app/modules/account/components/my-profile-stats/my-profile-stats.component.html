@@ -6,21 +6,21 @@
 
 <ng-container *ngIf="showContent">
     <div fxFlexFill fxLayout="row" fxLayoutAlign="center start"  fxLayoutGap="30px" class="dropdown-wrapper">
-      <app-custom-dropdown
-        [items]="grades"
+      <!-- <app-custom-dropdown
+       
         [icon]="'home'"
         [key]="'name'"
         style="min-height: 50px; width: 284px;"
         [over]="true"
         [class.limit-custom-dropdown-height]="!gradeOpen"
         (stateChanged)="gradeOpen = !gradeOpen"
-        (selected)="selectedGrade($event)"
+        
         [color]="'orange'"
         [placeholder]="'Grade'"
       >
-      </app-custom-dropdown>
+      </app-custom-dropdown> -->
 
-      <app-custom-dropdown
+      <!-- <app-custom-dropdown
         [items]="times"
         [icon]="'access_time'"
         [key]="'name'"
@@ -32,9 +32,9 @@
         [color]="'accent'"
         [placeholder]="'Time Period'"
       >
-      </app-custom-dropdown>
+      </app-custom-dropdown> -->
 
-      <app-custom-dropdown
+      <!-- <app-custom-dropdown
         [items]="subjects"
         [icon]="'edit'"
         [key]="'name'"
@@ -46,11 +46,11 @@
         [color]="'green'"
         [placeholder]="'Subject'"
       >
-      </app-custom-dropdown>
+      </app-custom-dropdown> -->
     </div>
 
     <div fxFlexFill fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="30px">
-      <app-progress-card *ngFor="let stat of stats" [progress]="stat" [state]="$statsLoading">
-      </app-progress-card>
+      <!-- <app-progress-card *ngFor="let stat of stats" [progress]="stat" [state]="$statsLoading">
+      </app-progress-card> -->
     </div>
   </ng-container>

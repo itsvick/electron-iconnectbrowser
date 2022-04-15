@@ -32,11 +32,16 @@
     "build:start:prod": "npm run build:dev && npx electron .",
     "start:built": "npx electron .",
     "build-electron": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod --base-href ./ --outputPath=./dist",
-    "build-icons": "electron-icon-maker --input=src/assets/favicon.png --output=./build"
+    "build-icons": "electron-icon-maker --input=src/assets/favicon.png --output=./build",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=dist/assets/favicon.icns --prune=true --out=release-builds/mac",
+    "build-package": "npm run build-electron --prefix .",
+    "installer-mac": "electron-installer-dmg ./release-builds/mac/iconnectdesktop-darwin-x64/iconnectdesktop.app iconnect-desktop --out=release-builds/mac/installer --overwrite --icon=dist/assets/favicon.icns",
+    "complete-mac": "npm run build-package && npm run package-mac && npm run installer-mac"
   },
   "dependencies": {
     "@electron/remote": "1.0.4",
     "drivelist": "9.2.4",
+    "electron-installer-dmg": "^3.0.0",
     "usb-detection": "4.10.0"
   },
   "devDependencies": {
