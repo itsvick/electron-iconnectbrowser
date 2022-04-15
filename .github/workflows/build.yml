@@ -33,7 +33,7 @@ jobs:
         node-version: 14.15.1
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: install node tools
-      run: npm install --global --production windows-build-tools
+      run: npm install --global --production windows-build-tools --vs2015
     - name: install node-gyp
       run: npm install --global node-gyp@latest
     - name: Set node config to use python2.7
