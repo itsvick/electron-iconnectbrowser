@@ -16,7 +16,9 @@ jobs:
           node-version: 14.19.0
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Install node-gyp
-        run: npm install node-gyp -g
+        run: npm install node-gyp@latest -g
+      - name: Set node config
+        run: npm config set node_gyp
       - name: Install dependencies
         run: npm install
       - name: Run build
