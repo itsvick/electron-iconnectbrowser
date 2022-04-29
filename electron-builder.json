@@ -41,11 +41,11 @@
     "splashImage": "dist/assets/icons/electron.bmp"
   },
   "mac": {
-    "icon": "dist/assets/icons",
+    "icon": "dist/assets/favicon.icns",
     "target": ["dmg"]
   },
   "linux": {
-    "icon": "dist/assets/icons",
-    "target": ["AppImage"]
+    "icon": "dist/assets/favicon.png",
+    "target": ["AppImage", "deb"]
   }
 }

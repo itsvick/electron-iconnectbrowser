@@ -31,7 +31,7 @@ function createWindow() {
       // dev tools for debugging
       // devTools: true
     },
-    icon: path.join(app.getAppPath(), 'dist/assets', 'favicon.ico'),
+    icon: path.join(app.getAppPath(), 'dist/assets', 'favicon.png'),
   });
 
   // win.webContents.openDevTools()

@@ -63,7 +63,7 @@ function createWindow() {
             enableRemoteModule: false,
             preload: path.join(electron_1.app.getAppPath(), 'dist/extraResources/preload', 'preload.js'),
         },
-        icon: path.join(electron_1.app.getAppPath(), 'dist/assets', 'favicon.ico'),
+        icon: path.join(electron_1.app.getAppPath(), 'dist/assets', 'favicon.png'),
     });
     // win.webContents.openDevTools()
     // https://stackoverflow.com/a/58548866/600559
