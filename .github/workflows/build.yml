@@ -1,58 +1,58 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  build_on_ubuntu: 
+  # build_on_ubuntu: 
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  #     - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+  #     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v2
+  #     - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+  #     - name: Install Node with version 14.x
+  #       uses: actions/setup-node@master
+  #       with:
+  #         node-version: 14.19.0
+  #     - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+  #     - name: Install dependencies
+  #       run: npm install
+  #     - name: Run build
+  #       env:
+  #         ELECTRON: true
+  #         APP_VERSION_NUMBER: 0.0.1
+  #       run: npm run electron:build
+  #     - name: see dist directory
+  #       run: ls ./dist
+  #     - name: see release directory
+  #       run: ls ./release/
+  #     - uses: actions/upload-artifact@v2
+  #       with: 
+  #           name: Make Assets for download
+  #           path: release/*.deb
+  #     - run: echo "🍏 This job's status is ${{ job.status }}."
+  build_on_mac:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: Install Node with version 14.x
-        uses: actions/setup-node@master
-        with:
-          node-version: 14.19.0
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: Install dependencies
-        run: npm install
-      - name: Run build
-        env:
-          ELECTRON: true
-          APP_VERSION_NUMBER: 0.0.1
-        run: npm run electron:build
-      - name: see dist directory
-        run: ls ./dist
-      - name: see release directory
-        run: ls ./release/
-      - uses: actions/upload-artifact@v2
-        with: 
-            name: Make Assets for download
-            path: release/*.deb
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-#   build_on_mac:
-#     runs-on: macOS-latest
-#     steps:
-#     - uses: actions/checkout@master
-#     - uses: actions/setup-node@master
-#       with:
-#         node-version: 14.15.1
-#     - name: Install dependencies
-#       run: npm install
-#     - name: Run build
-#       env:
-#         ELECTRON: true
-#         APP_VERSION_NUMBER: 0.0.1
-#       run: npm run electron:build
-#     - name: see dist directory
-#       run: ls ./dist
-#     - name: see release directory
-#       run: ls ./release/
-#     - uses: actions/upload-artifact@v2
-#       with: 
-#         name: assets for download
-#         path: release/*.dmg
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: 14.15.1
+    - name: Install dependencies
+      run: npm install
+    - name: Run build
+      env:
+        ELECTRON: true
+        APP_VERSION_NUMBER: 0.0.1
+      run: npm run electron:build
+    - name: see dist directory
+      run: ls ./dist
+    - name: see release directory
+      run: ls ./release/
+    - uses: actions/upload-artifact@v2
+      with: 
+        name: assets for download
+        path: release/*.deb
 
 #   build_on_win:
 #     runs-on: windows-2019
