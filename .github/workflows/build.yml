@@ -15,10 +15,10 @@ jobs:
         with:
           node-version: 14.19.0
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: Install node-gyp
+        run: npm install node-gyp -g
       - name: Install dependencies
         run: npm install
-      - name: Rebuild Packages
-        run: npm run rebuild
       - name: Run build
         env:
           ELECTRON: true
